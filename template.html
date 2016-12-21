@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Jackie Plank | Realtor</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- jQuery CSS -->
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+    <!-- Custom CSS -->
+    <link href="css/small-business.css" rel="stylesheet">
+    <link href="css/jackieplank.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+	
+	<!-- Navigation -->
+    <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="http://placehold.it/150x50&text=Logo" alt="">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Heading Row -->
+        <div class="row">
+        	
+        	<!-- Header -->
+        	<div class="container col-md-8">
+				<div class="row">
+                	<h1>Header</h1>
+				</div>
+			</div>
+            
+            <!-- /.col-md-4 -->
+            <div class="col-md-4">
+            	<div class="container col-md-12">
+            		<div class="row">
+            			<img src="img/dual-picture-no-shadow.png" class="img-responsive" />
+            		</div>
+            		<div class="row">
+	                	<h1><strong>Jackie Plank</strong><br />Realtor</h1>
+    	            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        	        	<a class="btn btn-success btn-lg hidden-xs" id="listings-button" href="#" data-toggle="modal" data-target="#listings-modal">Search Listings</a>
+
+            	  	</div>
+              	</div>
+            </div>
+            <!-- /.col-md-4 -->
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Content Row -->
+        <div class="row">
+            
+            
+            
+            
+
+		<!-- Listings modal NEW -->
+		<div class="modal" id="listings-modal">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title">Jackie Plank | 614-444-2763 | jackie@jackieplank.com<span class="float-right">Search Listings&nbsp;&nbsp;</span></h4>
+					</div>
+					<div class="modal-body">
+						<div class="myIframe"> 
+						<iframe class="embed-responsive-item" src="http://www.homecentralrealty.com/listings/" width="100%" height="100%"></iframe>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; The Jackie Plank Team 2016</p>
+                    <img src="img/realtor-icon.png" height="70px" width="55px" />
+                    <img src="img/bbb-icon.png" height="70px" width="55px" />					<img src="img/equal-housing.png" height="70px" width="70px" />
+                </div>
+            </div>
+        </footer>
+
+    </div> <!-- end main container -->
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- jQuery UI -->
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!-- Google Maps API -->
+    <!-- script src="http://maps.google.com/maps/api/js?sensor=false"></script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDZeFnfnLaCtQMy8ewg2qceZekEyJYeLTw&callback=initMap" async defer></script>
+
+    
+    	<script>
+			$('.modal-content').resizable({
+				//alsoResize: ".modal-dialog",
+				minHeight : 300,
+				minWidth : 300
+			});
+			$('.modal-dialog').draggable();
+
+			$('#listings-modal').on('show.bs.modal', function() {
+				$(this).find('.modal-body').css({
+					'max-height' : '100%'
+				});
+			});
+		</script>
+</body>
+
+</html>
