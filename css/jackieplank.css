@@ -5,6 +5,7 @@ body
 	transform-origin: center top;
 }
 
+
 .navbar-fixed-top
 {
 	background-color: #f4f4f4;	
@@ -55,6 +56,10 @@ body
  * ******    GENERIC CLASSES    ********************************************
  * ************************************************************************ */
 
+.larger-text
+{
+	font-size: 1.2em;
+}
 /* Light grey border for elements */
 .bordered
 {
@@ -85,6 +90,12 @@ body
 {
 	background-color: rgba(239,125,0,0.8);
 	color: white;
+}
+.center-image
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;	
 }
 
 
