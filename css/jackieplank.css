@@ -1,3 +1,26 @@
+/** ===============================================================
+ * 	Main CSS file for jackieplank.com
+ *  @author Eric Davis - 2016
+ * 
+ * SWATCH COLORS
+ * =============
+ * 
+ * 
+ * CONTENTS
+ * =============
+ * I. 	Body - Stylings for the page body
+ * II.	Header & Nav - Stylings for the Header & NavBar
+ * III. Content - Stylings for the page main content
+ * IV.	Homepage - Stylings specific to the homepage
+ * V.	Generic - Generic stylings for any element
+ * 
+ =================================================================== */
+
+
+/* =============================================
+ * ==  I. Body		============================
+ * ============================================= */
+
 body
 {
 	background-color: #eee;
@@ -6,17 +29,89 @@ body
 }
 
 
+/* =============================================
+ * ==  II. Header & Nav		====================
+ * ============================================= */
+
 .navbar-fixed-top
 {
 	background-color: #f4f4f4;	
 }
 
 
+/* =============================================
+ * ==  III. Content		========================
+ * ============================================= */
+
+/* 
+ * "Search Listings" button in sidebar 
+ */
+#listings-button
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*
+ * Search Listings Iframe
+ */
+.myIframe 
+{
+	position: relative;
+	padding-bottom: 65.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: auto; 
+	-webkit-overflow-scrolling:touch;
+	border: solid black 1px;
+} 
+.myIframe iframe 
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/*
+ * Team Member Images
+ */
+#drew-picture
+{
+	float: left;
+	margin-right: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+#agnes-picture
+{
+	float: right;
+	margin-left: 15px;
+	padding-right: 5px;
+}
+#jackie-picture
+{
+	border-radius: 10px;
+}
+
+
+/* =============================================
+ * ==  IV. Homepage		========================
+ * ============================================= */
+
+/*
+ * Carousel image homepage
+ */
 .carousel-inner
 {
 	box-shadow: -10px 10px 10px #888888;
 }
 
+/*
+ * Embedded Google Map
+ */
 #map-container
 {
 	height: 250px;
@@ -25,61 +120,37 @@ body
 	margin-right: auto;
 }
 
-#listings-button
-{
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
 
-#drew-picture
-{
-	float: left;
-	margin-right: 10px;
-	padding-right: 5px;
-	padding-left: 5px;
-}
+/* =============================================
+ * ==  V. Generic		========================
+ * ============================================= */
 
-#agnes-picture
-{
-	float: right;
-	margin-left: 15px;
-	padding-right: 5px;
-}
-
-#jackie-picture
-{
-	border-radius: 10px;
-}
-
-/* *************************************************************************
- * ******    GENERIC CLASSES    ********************************************
- * ************************************************************************ */
-
-.larger-text
-{
-	font-size: 1.2em;
-}
-/* Light grey border for elements */
-.bordered
-{
-	border: 1px solid #eaeaea;
-}
-
-/* Float & Alignment classes */
-.float-right
-{
-	float: right;
-}
+/* 
+ * Float & Alignment classes 
+ */
 .align-right
 {
 	text-align: right;
 }
+.float-right
+{
+	float: right;
+}
 
-/* Colors & Background-Colors */
+/* 
+ * Text Color & Size classes 
+ */
+.larger-text
+{
+	font-size: 1.2em;
+}
+
+/*
+ * Colors & Background-Colors 
+ */
 .black
 {
-	color: black;
+	color: #000;
 	background-color: rgba(0,0,0,0.3);
 }
 .bg-trans
@@ -91,6 +162,19 @@ body
 	background-color: rgba(239,125,0,0.8);
 	color: white;
 }
+
+/*
+ * Element Borders
+ */
+/* Light grey border for elements */
+.bordered
+{
+	border: 1px solid #eaeaea;
+}
+
+/*
+ * Images
+ */
 .center-image
 {
 	display: block;
@@ -99,20 +183,3 @@ body
 }
 
 
-
-.myIframe {
-position: relative;
-padding-bottom: 65.25%;
-padding-top: 30px;
-height: 0;
-overflow: auto; 
--webkit-overflow-scrolling:touch;
-border: solid black 1px;
-} 
-.myIframe iframe {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-}
