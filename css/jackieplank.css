@@ -26,6 +26,7 @@ body
 	background-color: #eee;
 	transform: scale(0.90);
 	transform-origin: center top;
+	height: 100vh;
 }
 
 
@@ -94,6 +95,15 @@ body
 #jackie-picture
 {
 	border-radius: 10px;
+}
+
+/*
+ * Gallery for Listings page
+ */
+.gallery
+{
+    display: inline-block;
+    margin-top: 20px;
 }
 
 
@@ -181,5 +191,26 @@ body
 	margin-left: auto;
 	margin-right: auto;	
 }
+
+
+
+
+
+
+/* =============================================
+ * ==  TESTING STUFF
+ * ============================================= */
+.listings-slider
+{
+	margin-top: 5%;
+}
+.tab-container
+{
+	margin-top: 3%;
+}
+
+
+
+
 
 

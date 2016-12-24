@@ -97,10 +97,10 @@
         <hr />
 
             
-		<!-- Listings modal NEW -->
+		<!-- "Search Listings" modal -->
 		<div class="modal" id="listings-modal">
 			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
+				<div class="modal-content modal-resizable">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							&times;
@@ -134,29 +134,27 @@
     </div> <!-- end main container -->
 
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <!-- jQuery UI -->
-    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+   <!-- Load JavaScript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Custom JavaScript -->
-    <script src="js/jackieplank.js"></script>
-  
-    	<script>
-			$('.modal-content').resizable({
-				//alsoResize: ".modal-dialog",
-				minHeight : 300,
-				minWidth : 300
-			});
-			$('.modal-dialog').draggable();
+	<script src="js/jackieplank.js"></script>
 
-			$('#listings-modal').on('show.bs.modal', function() {
-				$(this).find('.modal-body').css({
-					'max-height' : '100%'
-				});
-			});
-		</script>
+	<!-- SAFE TO DELETE IF NOT USING GALLERY -->
+	<!-- Gallery Plugin -->
+	<script src="js/gallery-carousel.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>	
+	<script>
+		$(document).ready(function(){
+    	//FANCYBOX
+    	//https://github.com/fancyapps/fancyBox
+   		$(".fancybox").fancybox({
+        openEffect: "none",
+       	closeEffect: "none"
+    });
+});
+	</script>
 </body>
 
 </html>

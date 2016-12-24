@@ -1,17 +1,23 @@
 /*
- * Carousel Gallery CSS Snippet
- * Taken from http://bootsnipp.com/snippets/featured/carousel-with-gallery-thumbs
+ * Carousel on top of  thumbnails
+ * Taken from:  http://bootsnipp.com/snippets/featured/carousel-extended
  */
-.hide-bullets {
-    list-style:none;
-    margin-left: -40px;
-    margin-top:20px;
+.hide-bullets 
+{
+	list-style:none;
+	margin-left: -40px;
+	margin-top:20px;
 }
 
-.thumbnail {
-    padding: 0;
+/*
+.thumbnail
+{
+	width: 140%;
+	height: 140%;
 }
+*/
 
-.carousel-inner>.item>img, .carousel-inner>.item>a>img {
-    width: 100%;
+.hide-bullets li
+{
+	margin-right: 2%;
 }
