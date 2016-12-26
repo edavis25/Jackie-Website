@@ -192,7 +192,14 @@ body
 	margin-right: auto;	
 }
 
-
+/*
+ * Increase z-index for embedded APIs
+ * Fixes non-responsive facebook/google map API in mobile
+ */
+.z-index
+{
+	z-index: 9;
+}
 
 
 
