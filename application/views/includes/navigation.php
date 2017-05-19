@@ -22,10 +22,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="<?= base_url('home')?>"><span class="glyphicon glyphicon-home <?= ($active == 'home') ? 'active' : ''?>"></span></a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="<?= base_url('listings')?>" class="<?= ($active == 'listings') ? 'active' : ''?>">Listings</a></li>
+                <!-- li><a href="#">About</a></li -->
                 <li><a href="<?= base_url('faq/buyers')?>" class="<?= ($active == 'buyers') ? 'active' : ''?>">Buyers</a></li>
                 <li><a href="<?= base_url('faq/sellers')?>" class="<?= ($active == 'sellers') ? 'active' : ''?>">Sellers</a></li>
-                <li><a href="listings.html">Listings</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

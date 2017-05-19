@@ -17,11 +17,11 @@
         <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
 
         <!-- Template CSS -->
-        <link href="<?= base_url('css/small-business.css')?>" rel="stylesheet">
-        
+        <link href="<?= base_url('css/small-business.css') ?>" rel="stylesheet">
+
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="<?= base_url('css/jackie-plank.css')?>">
-        
+        <link rel="stylesheet" href="<?= base_url('css/jackie-plank.css') ?>">
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -31,3 +31,5 @@
     </head>
 
     <body>
+        <!-- Page content wrapper (closed in footer) -->
+        <div class="container">
