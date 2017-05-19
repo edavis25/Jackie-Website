@@ -20,15 +20,41 @@ class UploadDir {
         // get rid of other nasty characters
         return preg_replace('/[^0-9a-zA-Z_\.-]/', '_', $str);
     }
-
+    
+     private function generateName() {
+        do {
+            $name = uniqid('upload');
+        } while (is_file($this->dir . DIRECTORY_SEPARATOR . $name));
+        return $name;
+    }
+    
+    // Key = HTML name for the file input
+    public function getAllUploads($key) {
+        $result = array();
+        $count = sizeof($_FILES[$key]['name']);
+        for ($i = 0; $i < $count; $i++) {
+            $result[] = $this ->getUpload($_FILES[$key], $i);
+        }
+        return $result;
+    }
+    
+    // Format single upload to match the weird nested arrays used for multiple
+    // $_FILES uploads to resuse getUpload function... because PHP
+    public function getSingleUpload($key) {
+        $arr = array();
+        foreach($_FILES[$key] as $key => $meta) {
+            $arr[$key] = array($meta);
+        }
+        
+        return $this->getUpload($arr);
+        
+    }
+    
+     // Don't call directly, call the getAllUploads for multiple or getSingleUploads for single
     public function getUpload($files = null, $key = 0, $generate_name = false) {
-        //if (isset($_FILES[$key])) {
         if (isset($files)) {
-            //$tmp_name = $_FILES[$key]['tmp_name'];
             $tmp_name = $files['tmp_name'][$key];
-            
             $nameOnDisk = ($generate_name) ? $this->generateName() : $files['name'][$key];
-            
             $path = $this -> dir . DIRECTORY_SEPARATOR . $nameOnDisk;
             $success = move_uploaded_file($tmp_name, $path);
             if (!$success) {
@@ -46,34 +72,5 @@ class UploadDir {
             // @formatter:on
         }
         return $meta;
-    }
-
-    private function generateName() {
-        do {
-            $name = uniqid('upload');
-        } while (is_file($this->dir . DIRECTORY_SEPARATOR . $name));
-        return $name;
-    }
-    
-    // Name of file HTML input
-    public function getAllUploads($key) {
-        $result = array();
-        $count = sizeof($_FILES[$key]['name']);
-        for ($i = 0; $i < $count; $i++) {
-            $result[] = $this ->getUpload($_FILES[$key], $i);
-        }
-        return $result;
-    }
-    
-    // Format single upload to match the weird nested arrays used for multiple
-    // $_FILES uploads to resuse getUpload() function... because PHP
-    public function getSingleUpload($key) {
-        $arr = array();
-        foreach($_FILES[$key] as $key => $meta) {
-            $arr[$key] = array($meta);
-        }
-        
-        $this->getUpload($arr);
-        
     }
 }

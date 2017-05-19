@@ -9,11 +9,12 @@ class Image extends Model {
     protected $size;
     
     public function __construct($array = array()) {
-        parent::__construct(safeParam($array, 'id', null));
-        $this->setOriginalFilename(safeParam($array, 'original_filename', null));
-        $this->setFilename(safeParam($array, 'filename', null));
-        $this->setExtension(safeParam($array, 'extension', null));
-        $this->setSize(safeParam($array, 'size', null));
+        parent::__construct(safeGet($array, 'id', null));
+        $this->setOriginalFilename(safeGet($array, 'original_filename', null));
+        $this->setFilename(safeGet($array, 'filename', null));
+        $this->setExtension(safeGet($array, 'extension', null));
+        $this->setSize(safeGet($array, 'size', null));
+
     }
     
     public function getOriginalFilename() {
@@ -33,8 +34,8 @@ class Image extends Model {
     public function getExtension() {
         return $this->extension;
     }
-    public function setExtension($extension) {
-        $this->extenstion = $extension;
+    public function setExtension($ext) {
+        $this->extension = $ext;
     }
     
     public function getSize() {
@@ -44,4 +45,16 @@ class Image extends Model {
         $this->size = $size;
     }
     
+    public function insert() {
+        $data = array(
+            'original_filename' => $this->getOriginalFilename(),
+            'filename' => $this->getFilename(),
+            'extension' => $this->getExtension(),
+            'size' => $this->getSize()
+        );
+        
+        $this->db->insert('images', $data);
+        
+        return $this->db->insert_id();
+    }
 }

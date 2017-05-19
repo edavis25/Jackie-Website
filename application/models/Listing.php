@@ -2,6 +2,8 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once 'Model.php';
+
 class Listing extends Model {
     protected $address;
     protected $neighborhood;
@@ -13,15 +15,15 @@ class Listing extends Model {
     protected $featured_image;
     
     public function __construct($array = array()) {
-        parent::__construct(safeParam($array, 'id', null));
-        $this->setAddress(safeParam($array, 'address', null));
-        $this->setNeighborhood(safeParam($array, 'neighborhood', null));
-        $this->setPrice(safeParam($array, 'price', null));
-        $this->setSq_ft(safeParam($array, 'sq_ft', null));
-        $this->setBedrooms(safeParam($array, 'bedrooms', null));
-        $this->setBathrooms(safeParam($array, 'bathrooms', null));
-        $this->setAdditional(safeParam($array, 'additional', null));
-        $this->setFeaturedImage(safeParam($array, 'featured_image', null));
+        parent::__construct(safeGet($array, 'id', null));
+        $this->setAddress(safeGet($array, 'address', null));
+        $this->setNeighborhood(safeGet($array, 'neighborhood', null));
+        $this->setPrice(safeGet($array, 'price', null));
+        $this->setSq_ft(safeGet($array, 'sq_ft', null));
+        $this->setBedrooms(safeGet($array, 'bedrooms', null));
+        $this->setBathrooms(safeGet($array, 'bathrooms', null));
+        $this->additional = (safeGet($array, 'additional', null));
+        $this->setFeaturedImage(safeGet($array, 'featured_image', null));
     }
     
     public function getAddress() {
@@ -80,4 +82,20 @@ class Listing extends Model {
         $this->featured_image = $image;
     }
     
+    public function insert() {
+           
+        $sql = "INSERT INTO listings (address, neighborhood, price, sq_ft, bedrooms, bathrooms, additional, featured_image) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $binds = array(
+            $this->getAddress(),
+            $this->getNeighborhood(),
+            $this->getPrice(),
+            $this->getSq_ft(),
+            $this->getBedrooms(),
+            $this->getBathrooms(),
+            $this->getAdditional(),
+            $this->getFeaturedImage()
+        );
+        $this->db->query($sql, $binds);
+    }
 }
