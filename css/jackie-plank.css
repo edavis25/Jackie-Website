@@ -122,6 +122,10 @@ body {
 .hide-bullets {
   list-style-type: none;
 }
+.thumbnail {
+  width: 80%;
+  height: auto;
+}
 .larger-text {
   font-size: 1.2em;
 }
