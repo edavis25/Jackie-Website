@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once 'Model.php';
 
 class Listing extends Model {
+    private static $db;
     protected $address;
     protected $neighborhood;
     protected $price;
@@ -13,17 +14,20 @@ class Listing extends Model {
     protected $bathrooms;
     protected $additional;
     protected $featured_image;
+    protected $listing_type;
     
     public function __construct($array = array()) {
         parent::__construct(safeGet($array, 'id', null));
+        self::$db = &get_instance()->db;
         $this->setAddress(safeGet($array, 'address', null));
         $this->setNeighborhood(safeGet($array, 'neighborhood', null));
         $this->setPrice(safeGet($array, 'price', null));
         $this->setSq_ft(safeGet($array, 'sq_ft', null));
         $this->setBedrooms(safeGet($array, 'bedrooms', null));
         $this->setBathrooms(safeGet($array, 'bathrooms', null));
-        $this->additional = (safeGet($array, 'additional', null));
+        $this->setAdditional(safeGet($array, 'additional', null));
         $this->setFeaturedImage(safeGet($array, 'featured_image', null));
+        $this->setListingType(safeGet($array, 'listing_type', null));
     }
     
     public function getAddress() {
@@ -82,20 +86,36 @@ class Listing extends Model {
         $this->featured_image = $image;
     }
     
+    public function getListingType() {
+        return $this->listing_type;
+    }
+    public function setListingType($type) {
+        $this->listing_type = $type;
+    }
+    
     public function insert() {
-           
-        $sql = "INSERT INTO listings (address, neighborhood, price, sq_ft, bedrooms, bathrooms, additional, featured_image) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        $binds = array(
-            $this->getAddress(),
-            $this->getNeighborhood(),
-            $this->getPrice(),
-            $this->getSq_ft(),
-            $this->getBedrooms(),
-            $this->getBathrooms(),
-            $this->getAdditional(),
-            $this->getFeaturedImage()
+        $data = array(
+            'address' => $this->getAddress(),
+            'neighborhood' => $this->getNeighborhood(),
+            'price' => $this->getPrice(),
+            'sq_ft' => $this->getSq_ft(),
+            'bedrooms' => $this->getBedrooms(),
+            'bathrooms' => $this->getBathrooms(),
+            'additional' => $this->getAdditional(),
+            'featured_image' => $this->getFeaturedImage(),
+            'listing_type' => $this->getListingType()
         );
-        $this->db->query($sql, $binds);
+        
+        $this->db->insert('listings', $data);
+        return $this->db->insert_id();
+    }
+    
+    public static function getAllListings() {
+        $rows = self::$db->get('listings')->result_array();
+        return self::makeObjectsFromRows($rows, self::class);
+    }
+    
+    public static function getListingsByType($type) {
+        
     }
 }

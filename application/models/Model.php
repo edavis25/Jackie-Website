@@ -16,13 +16,6 @@ class Model extends CI_Model {
         $this->id = $id;
     }
     
-    public function test(){
-        $sql = "SELECT * FROM images";
-        $query = $this->db->query($sql);
-        
-        return $query->row_array();
-    }
-    
     public static function makeObjectFromRow($row, $objType) {
         $obj = new $objType($row);
         return $obj;

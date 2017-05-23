@@ -7,6 +7,7 @@ class Image extends Model {
     protected $filename;
     protected $extension;
     protected $size;
+    protected $listing_id;
     
     public function __construct($array = array()) {
         parent::__construct(safeGet($array, 'id', null));
@@ -14,7 +15,7 @@ class Image extends Model {
         $this->setFilename(safeGet($array, 'filename', null));
         $this->setExtension(safeGet($array, 'extension', null));
         $this->setSize(safeGet($array, 'size', null));
-
+        $this->setListingId(safeGet($array, 'listing_id', null));
     }
     
     public function getOriginalFilename() {
@@ -45,16 +46,41 @@ class Image extends Model {
         $this->size = $size;
     }
     
+    public function getListingId() {
+        return $this->listing_id;
+    }
+    public function setListingId($id) {
+        $this->listing_id = $id;
+    }
+
+    
     public function insert() {
         $data = array(
             'original_filename' => $this->getOriginalFilename(),
             'filename' => $this->getFilename(),
             'extension' => $this->getExtension(),
-            'size' => $this->getSize()
+            'size' => $this->getSize(),
+            'listing_id' => $this->getListingId()
         );
         
         $this->db->insert('images', $data);
         
-        return $this->db->insert_id();
+        // Set objects ID
+        $id = $this->db->insert_id();
+        $this->setId($id);
+        return $id;
+    }
+    
+    public function update() {
+        $data = array(
+            'original_filename' => $this->getOriginalFilename(),
+            'filename' => $this->getFilename(),
+            'extension' => $this->getExtension(),
+            'size' => $this->getSize(),
+            'listing_id' => $this->getListingId()
+        );
+        
+        $this->db->where('id', $this->getId());
+        $this->db->update('images', $data);
     }
 }

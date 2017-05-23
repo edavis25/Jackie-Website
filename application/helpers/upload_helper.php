@@ -31,22 +31,33 @@ class UploadDir {
     // Key = HTML name for the file input
     public function getAllUploads($key) {
         $result = array();
-        $count = sizeof($_FILES[$key]['name']);
-        for ($i = 0; $i < $count; $i++) {
-            $result[] = $this ->getUpload($_FILES[$key], $i);
+        
+        if ($this->checkFilesExist($key, true)) {
+            $count = sizeof($_FILES[$key]['name']);
+            for ($i = 0; $i < $count; $i++) {
+                $result[] = $this ->getUpload($_FILES[$key], $i);
+            }
+            
         }
-        return $result;
+        
+        return $result;   // Always return array, even if no files found
     }
     
     // Format single upload to match the weird nested arrays used for multiple
     // $_FILES uploads to resuse getUpload function... because PHP
     public function getSingleUpload($key) {
-        $arr = array();
-        foreach($_FILES[$key] as $key => $meta) {
-            $arr[$key] = array($meta);
-        }
         
-        return $this->getUpload($arr);
+        if ($this->checkFilesExist($key)) {
+            $arr = array();
+            foreach($_FILES[$key] as $key => $meta) {
+                $arr[$key] = array($meta);
+            }
+        
+            return $this->getUpload($arr);
+        }
+        else {
+            return false;
+        }
         
     }
     
@@ -72,5 +83,33 @@ class UploadDir {
             // @formatter:on
         }
         return $meta;
+    }
+    
+    // Set $arr flag for checking multiple file uploads
+    private function checkFilesExist($key, $arr = false) {
+        
+        if (empty($_FILES)) {
+            return false;   // First check for empty superglobal before trying to use it
+        }
+        
+        $file = $_FILES[$key];
+        
+        // If multiple files
+        if ($arr) {
+            if (!file_exists($file['tmp_name'][0]) || !is_uploaded_file($file['tmp_name'][0])) {
+                return false;
+            }
+        }
+        else {
+            if (!file_exists($file['tmp_name']) || !is_uploaded_file($file['tmp_name'])) {
+                return false;
+            }
+        }
+
+        return true;
+        
+        // NOTE: The $_FILES array will always contain only 1 element, even for 
+        // multiple uploads. For some reason PHP then nests metadata arrays inside of that 
+        // single element for multiple uploads so this code is kind of gross...
     }
 }

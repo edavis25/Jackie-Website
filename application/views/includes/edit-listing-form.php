@@ -52,7 +52,7 @@
                 <label>Listing Type</label>
                 <div class="radio">
                     <label>
-                        <input name="listing-type" id="input-listing" value="listing" checked="" default type="radio">
+                        <input name="listing-type" id="input-listing" value="sale" checked="" default type="radio">
                         For Sale
                     </label>
                     <label>
