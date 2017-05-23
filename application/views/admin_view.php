@@ -22,41 +22,41 @@
         <?php foreach ($listings as $listing) : ?>
             <section class="row">
                 <div class="container-fluid well">
-                <div class="help-block col-xs-12 col-sm-3">
-                    <b><?= $listing->getAddress() ?></b>
-                    <br />
-                    <?= $listing->getPrice() ?>
-                </div>
-                
-                <div class="help-block col-xs-12 col-sm-3">
-                    <form class="inline">
-                        <!--a class="btn btn-warning" value="Edit Listing Info" data-toggle="modal" data-target="#edit-listing" / -->
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#listing-modal">Edit Listing Info</button>
-                        <input type="hidden" name="listing-id" value="" />
-                    </form>
-                </div>
-                
-                <!-- TODO: Create New Modal -->
-                <div class="help-block col-xs-12 col-sm-3">
-                    <form class="inline">
-                        <!--a class="btn btn-warning" value="Edit Listing Info" data-toggle="modal" data-target="#edit-listing" / -->
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#listing-modal">Edit Listing Photos</button>
-                        <input type="hidden" name="listing-id" value="" />
-                    </form>
-                </div>
-                
-                <div class="help-block col-xs-12 col-sm-3">
-                    <div class="delete-wrapper">
-                        <a href="##" class="btn btn-danger delete-button">Delete</a>
-                        <span class="confirm-delete" style="display: none;"> 
-                            <form action=" " method="POST" class="inline">
-                                <input type="submit" class="btn" value="yes" />
-                                <input type="hidden" name='delete-id' value=" " />
-                            </form>
-                            /<a href="##" class="delete-button btn">no</a>
-                        </span>
+                    <div class="help-block col-xs-12 col-sm-3">
+                        <b><?= $listing->getAddress() ?></b>
+                        <br />
+                        <?= $listing->getPrice() ?>
                     </div>
-                </div>
+
+                    <div class="help-block col-xs-12 col-sm-3">
+                        <form class="inline">
+                            <!--a class="btn btn-warning" value="Edit Listing Info" data-toggle="modal" data-target="#edit-listing" / -->
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#listing-modal">Edit Listing Info</button>
+                            <input type="hidden" name="listing-id" value="" />
+                        </form>
+                    </div>
+
+                    <!-- TODO: Create New Modal -->
+                    <div class="help-block col-xs-12 col-sm-3">
+                        <form class="inline">
+                            <!--a class="btn btn-warning" value="Edit Listing Info" data-toggle="modal" data-target="#edit-listing" / -->
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#listing-modal">Edit Listing Photos</button>
+                            <input type="hidden" name="listing-id" value="" />
+                        </form>
+                    </div>
+
+                    <div class="help-block col-xs-12 col-sm-3">
+                        <div class="delete-wrapper">
+                            <a href="##" class="btn btn-danger delete-button">Delete</a>
+                            <span class="confirm-delete" style="display: none;"> 
+                                <form action=" " method="POST" class="inline">
+                                    <input type="submit" class="btn" value="yes" />
+                                    <input type="hidden" name='delete-id' value=" " />
+                                </form>
+                                /<a href="##" class="delete-button btn">no</a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </section>
         <?php endforeach; ?>
