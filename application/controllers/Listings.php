@@ -54,6 +54,10 @@ class Listings extends CI_Controller {
         $this->uploadGalleryImages($id);
     }
     
+    public function delete_listing() {
+        
+    }
+    
     // Convert returned metadata to image object creation array
     private function createImageArray($arr) {
         $result = array();

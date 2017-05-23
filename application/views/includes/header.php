@@ -14,7 +14,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- jQuery CSS -->
-        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"> 
 
         <!-- Template CSS -->
         <link href="<?= base_url('css/small-business.css') ?>" rel="stylesheet">
@@ -32,4 +32,4 @@
 
     <body>
         <!-- Page content wrapper (closed in footer) -->
-        <div class="container">
+        <div class="container" id="page-wrapper">

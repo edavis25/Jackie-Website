@@ -52,7 +52,6 @@ class Image extends Model {
     public function setListingId($id) {
         $this->listing_id = $id;
     }
-
     
     public function insert() {
         $data = array(

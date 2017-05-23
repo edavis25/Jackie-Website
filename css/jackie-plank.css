@@ -19,9 +19,13 @@
  * ============================================= */
 body {
   background-color: #eee;
-  transform: scale(0.9);
-  transform-origin: center top;
-  height: 100vh;
+}
+@media (min-width: 1200px) {
+  #page-wrapper {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 /* =============================================
  * ==  II. Header & Nav		================
@@ -43,6 +47,9 @@ body {
  * ============================================= */
 .carousel-inner {
   box-shadow: -10px 10px 10px #888888;
+}
+.confirm-delete {
+  display: inline;
 }
 .gallery {
   display: inline-block;
@@ -96,7 +103,7 @@ body {
   margin-right: auto;
 }
 /* =============================================
- * ==  V. Generic	========================
+ * ==  V. Generic & Helper Classes  ============
  * ============================================= */
 .align-right {
   text-align: right;
@@ -121,6 +128,12 @@ body {
 }
 .hide-bullets {
   list-style-type: none;
+}
+.inline {
+  display: inline;
+}
+.table-fixed {
+  table-layout: fixed;
 }
 .thumbnail {
   width: 80%;

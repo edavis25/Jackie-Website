@@ -15,12 +15,17 @@ $(document).ready(function() {
         $(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
     });
     
+    // Toggle button confirm
+    $('.delete-button').on('click', function () {
+        var parent = $(this).closest('div[class^="delete-wrapper"]');
+        var div = parent.children();
+        toggle(div[1]);
+    });
     
     // Homepage Google map
     if ($("#map-container").length) {
         initMap();
     }
-    
     
     $('#myCarousel').carousel({
         interval: false
@@ -41,7 +46,6 @@ $(document).ready(function() {
         $('#carousel-text').html($('#slide-content-'+id).html());
     });
 });
-
 
 
 function initMap() {
@@ -91,4 +95,14 @@ function initMap() {
     var_marker4.setMap(var_map);
 }
 
-
+// Generic toggle visibility function
+function toggle(element) {
+    if (element) {
+        var display = element.style.display;
+        if (display == "none") {
+            element.style.display = "inline-block";
+        } else {
+            element.style.display = "none";
+        }
+    }
+}

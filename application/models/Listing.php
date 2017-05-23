@@ -110,12 +110,43 @@ class Listing extends Model {
         return $this->db->insert_id();
     }
     
+    public function update() {
+        $data = array(
+            'address' => $this->getAddress(),
+            'neighborhood' => $this->getNeighborhood(),
+            'price' => $this->getPrice(),
+            'sq_ft' => $this->getSq_ft(),
+            'bedrooms' => $this->getBedrooms(),
+            'bathrooms' => $this->getBathrooms(),
+            'additional' => $this->getAdditional(),
+            'featured_image' => $this->getFeaturedImage(),
+            'listing_type' => $this->getListingType()
+        );
+        
+        $this->db->where('id', $this->getId());
+        $this->db->update('listings', $data);
+    }
+    
+    public function delete() {
+        $this->db->delete('listings', array('id' => $this->getId()));
+    }
+    
     public static function getAllListings() {
         $rows = self::$db->get('listings')->result_array();
         return self::makeObjectsFromRows($rows, self::class);
     }
     
     public static function getListingsByType($type) {
+        $sql = "SELECT * FROM listings WHERE listing_type =
+                    (SELECT id FROM listing_types WHERE type = ?)";
+        $binds = array($type);
         
+        $rows = self::$db->query($sql, $binds)->result_array();
+        return self::makeObjectsFromRows($rows, self::class);
+    }
+    
+    public static function getListingById($id) {      
+        $row = self::$db->where('id', $id)->get('listings')->row_array();
+        return self::makeObjectFromRow($row, self::class);
     }
 }

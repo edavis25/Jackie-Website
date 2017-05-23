@@ -14,6 +14,9 @@ class Admin extends CI_Controller {
         
         $data['listings'] = Listing::getAllListings();
         
+        //$test = Listing::getListingsByType('rental');
+        //var_dump($test); die;
+        
         $this->load->view('admin_view', $data);
     }
     
