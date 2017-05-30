@@ -29,13 +29,13 @@ class UploadDir {
     }
     
     // Key = HTML name for the file input
-    public function getAllUploads($key) {
+    public function getAllUploads($key, $generate_name = false) {
         $result = array();
         
         if ($this->checkFilesExist($key, true)) {
             $count = sizeof($_FILES[$key]['name']);
             for ($i = 0; $i < $count; $i++) {
-                $result[] = $this ->getUpload($_FILES[$key], $i);
+                $result[] = $this ->getUpload($_FILES[$key], $i, $generate_name);
             }
             
         }
@@ -45,7 +45,7 @@ class UploadDir {
     
     // Format single upload to match the weird nested arrays used for multiple
     // $_FILES uploads to resuse getUpload function... because PHP
-    public function getSingleUpload($key) {
+    public function getSingleUpload($key, $generate_name = false) {
         
         if ($this->checkFilesExist($key)) {
             $arr = array();
@@ -53,7 +53,7 @@ class UploadDir {
                 $arr[$key] = array($meta);
             }
         
-            return $this->getUpload($arr);
+            return $this->getUpload($arr, 0, $generate_name);
         }
         else {
             return false;

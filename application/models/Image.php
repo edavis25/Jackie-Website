@@ -3,6 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Image extends Model {
+    private static $db;
     protected $original_filename;
     protected $filename;
     protected $extension;
@@ -11,6 +12,7 @@ class Image extends Model {
     
     public function __construct($array = array()) {
         parent::__construct(safeGet($array, 'id', null));
+        self::$db = &get_instance()->db;
         $this->setOriginalFilename(safeGet($array, 'original_filename', null));
         $this->setFilename(safeGet($array, 'filename', null));
         $this->setExtension(safeGet($array, 'extension', null));
@@ -81,5 +83,20 @@ class Image extends Model {
         
         $this->db->where('id', $this->getId());
         $this->db->update('images', $data);
+    }
+    
+    public function delete() {
+        $this->db->where('id', $this->getId());
+        $this->db->delete('images');
+    }
+    
+    public static function getImageById($id) {
+        $row = self::$db->where('id', $id)->get('images')->row_array();
+        return self::makeObjectFromRow($row, self::class);
+    }
+    
+    public static function getImagesByListingId($id) {
+        $rows = self::$db->where('listing_id', $id)->get('images')->result_array();
+        return self::makeObjectsFromRows($rows, self::class);
     }
 }

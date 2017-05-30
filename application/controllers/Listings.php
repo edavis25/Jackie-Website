@@ -11,6 +11,7 @@ class Listings extends CI_Controller {
         $this->load->model('listing_type');
     }
     
+    
     public function index() {
         $data = array();
         $data['active'] = 'listings';
@@ -18,13 +19,21 @@ class Listings extends CI_Controller {
         $this->load->view('listings_view', $data); 
     }
     
+    
+    // Add a new listing
     public function add_listing() {
+        
         // TODO: Add validation. Also, fix logic to deal with images that were not added.
         // Perhaps use a stock photo for image coming soon or something
-        
+
         $this->load->helper('upload');
         
         $listing_data = $this->input->post();
+        
+        // If updating info call update method instead
+        if ($listing_data['listing-id']) {
+            $this->update_listing($listing_data['listing-id'], $listing_data);
+        }
         
         // Get listing type
         $type = Listing_type::getTypeByName($listing_data['listing-type']);
@@ -33,11 +42,11 @@ class Listings extends CI_Controller {
         // Upload featured image file (if exists)
         $upload = new UploadDir('./img/uploads');
         
-        $featuredImg = $upload->getSingleUpload('featured-image');  // returns false if upload fails
-        if ($featuredImg) {                                         // only create image if upload success
+        $featuredImg = $upload->getSingleUpload('featured-image', true);    // returns false if upload fails
+        if ($featuredImg) {                                                 // only create image if upload success
             $imgArr = $this->createImageArray($featuredImg);
             $img = new Image($imgArr);
-            $listing_data['featured_image'] = $img->insert();       // Insert returns image id
+            $listing_data['featured_image'] = $img->insert();               // Insert returns image id
         }
 
         // Insert listing and find the new listing id
@@ -54,9 +63,50 @@ class Listings extends CI_Controller {
         $this->uploadGalleryImages($id);
     }
     
+    
     public function delete_listing() {
         
     }
+    
+    
+    // Update a listing that already exists
+    public function update_listing($id, $post_data) {
+         
+        $listing = Listing::getListingById($id);
+        
+        $listing->setAddress($post_data['address']);
+        $listing->setNeighborhood($post_data['neighborhood']);
+        $listing->setPrice($post_data['price']);
+        $listing->setSq_ft($post_data['sq_ft']);
+        $listing->setBedrooms($post_data['bedrooms']);
+        $listing->setBathrooms($post_data['bathrooms']);
+        $listing->setAdditional($post_data['additional']);
+        
+        $type = Listing_type::getTypeByName($post_data['listing-type']);
+        $listing->setListingType($type->getId());
+        
+        $listing->update();
+        
+        $this->session->set_flashdata('message_type', 'success');
+        $this->session->set_flashdata('message_content', 'Listing information updated!');
+        
+        redirect(base_url('admin'));
+        die; // Die to stop rest of the add_listing function called by form submit
+    }
+    
+    
+    // Populate and show the edit listing modal
+    public function edit_listing() {
+        
+        // Called from AJAX to edit existing listing
+        $id = $this->input->get('listing-id');
+        
+        $data = array();
+        $data['listing'] = Listing::getListingById($id);
+        
+        $this->load->view('includes/edit-listing-form', $data);
+    }
+    
     
     // Convert returned metadata to image object creation array
     private function createImageArray($arr) {
@@ -68,11 +118,12 @@ class Listings extends CI_Controller {
         return $result;
     }
     
+    
     // Upload gallery images (not including featured image)
     private function uploadGalleryImages($listing_id) {
         $upload = new UploadDir('./img/uploads');
         
-        $files = $upload->getAllUploads('gallery-images');
+        $files = $upload->getAllUploads('gallery-images', true);
         
         foreach ($files as $file) {
             $imgArr = $this->createImageArray($file);

@@ -45,6 +45,51 @@ $(document).ready(function() {
         var id = $('.item.active').data('slide-number');
         $('#carousel-text').html($('#slide-content-'+id).html());
     });
+    
+    
+    /*
+     * AJAX Calls
+     * 
+     * NOTE: The URLs will need changed when deployed on live server (remove 'jackie' from url)
+     */
+    $('.edit-listing-btn').on('submit', function(event) {
+       event.preventDefault();
+       var url = getRootUrl() + 'jackie/listings/edit_listing?';
+       url += $(this).serialize();
+       
+       loadDoc('edit-listing-modal-content', url);
+    });
+    
+    
+    $('.edit-images-btn').on('submit', function(event) {
+        event.preventDefault();
+        var url = getRootUrl() + 'jackie/images/edit_images?';
+        url += $(this).serialize();
+       
+        loadDoc('edit-images-modal-content', url);
+       
+        $('#edit-images-modal-content').off('click', '.img-click').on('click', '.img-click', function() {
+            if ($(this).hasClass('img-selected')) {
+                $(this).removeClass('img-selected');
+                $(this).css('border', 'none');
+                
+                $('#hide-' + $(this).attr('id')).remove();
+            }
+            else {
+                $(this).addClass('img-selected');
+                $(this).css('border', '3px solid blue');
+                
+                $('#hidden-div').append('<input type="hidden" id="hide-' + $(this).attr('id') + '" name="delete-ids[]" value="' + $(this).attr('id') + '" />');
+            }
+            
+            return false;
+        });
+        
+    });
+    
+    $('.close-images').on('click', function() {
+       $('#edit-images-modal-content').remove('#edit-images-form'); 
+    });
 });
 
 
@@ -105,4 +150,80 @@ function toggle(element) {
             element.style.display = "none";
         }
     }
+}
+
+function loadDoc(id, url, sync) {
+    sync = sync !== false; // Default true value
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById(id).innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", url, sync);
+    xhttp.send();
+}
+
+function getRootUrl() {
+    return window.location.origin ? window.location.origin + '/' : window.location.protocol + '/' + window.location.host + '/';
+}
+
+
+// POST request
+function postAjaxRequest(callback, url, args) {
+    var contentType = 'application/x-www-form-urlencoded';
+    var ajax = new createAjaxObject(callback);
+    if (!ajax) {
+        return false;
+    }
+
+    ajax.open('POST', url, true);
+    ajax.setRequestHeader('Content-type', contentType);
+    ajax.setRequestHeader('Content-length', args.length);
+    ajax.setRequestHeader('Connection', 'close');
+    ajax.send(args);
+    return true;
+}
+
+// GET request
+function getAjaxRequest(callback, url, args) {
+    // Ensure cached call is not used
+    var nocache = '&nocache=' + Math.random() * 1000000;
+
+    var ajax = new createAjaxObject(callback);
+    if (!ajax) {
+        return false;
+    }
+
+    ajax.open('GET', url + '?' + args + nocache, true);
+    ajax.send();
+    return true;
+}
+
+// Create the AJAX object. Nested Try/Catch blocks to accomodate different browsers
+function createAjaxObject(callback) {
+    var ajax;
+    try {
+        ajax = new XMLHttpRequest();
+    } catch (ex1) {
+        try {
+            ajax = new ActiveXObject("Msxm12.XMLHTTP");
+        } catch (ex2) {
+            try {
+                ajax = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (ex3) {
+                ajax = false;
+            }
+        }
+    }
+
+    if (ajax) {
+        ajax.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
+                callback.call(this.responseText);
+            }
+        };
+    }
+    return ajax;
 }

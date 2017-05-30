@@ -55,6 +55,9 @@ body {
   display: inline-block;
   margin-top: 20px;
 }
+.img-btn {
+  margin-right: 10px;
+}
 .myIframe {
   position: relative;
   padding-bottom: 65.25%;
