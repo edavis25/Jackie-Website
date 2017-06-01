@@ -54,20 +54,22 @@ $(document).ready(function() {
      */
     $('.edit-listing-btn').on('submit', function(event) {
        event.preventDefault();
-       var url = getRootUrl() + 'jackie/listings/edit_listing?';
+       var url = getRootUrl() + 'jackie/listings/edit_listing?';        // UPDATE URL HERE
        url += $(this).serialize();
        
        loadDoc('edit-listing-modal-content', url);
     });
     
     
+    // Open edit listing images modal and delegate events
     $('.edit-images-btn').on('submit', function(event) {
         event.preventDefault();
-        var url = getRootUrl() + 'jackie/images/edit_images?';
+        var url = getRootUrl() + 'jackie/images/edit_images?';          // UPDATE URL HERE
         url += $(this).serialize();
        
         loadDoc('edit-images-modal-content', url);
        
+        // Image selection events (in edit listing images modal)
         $('#edit-images-modal-content').off('click', '.img-click').on('click', '.img-click', function() {
             if ($(this).hasClass('img-selected')) {
                 $(this).removeClass('img-selected');
@@ -85,8 +87,27 @@ $(document).ready(function() {
             return false;
         });
         
-    });
+        // Set featured image button click
+        $('#edit-images-modal-content').off('click', '#set-featured-image-button').on('click', '#set-featured-image-button', function() {
+            
+            if($('.img-selected').length !== 1) {
+                var str = '0 or more than 1 images selected. Please select exactly 1 image from the "Edit Available Images" section to set as featured image.\n\n' +
+                           'Note: If you are trying to upload a featured image, you must first upload image with "Upload Images" (top of screen) and then select \nthe image thumbnail from the list of available images before you can use "Set Featured Image"';
+                alert(str);
+                return;
+            }
+            
+            
+            var url = getRootUrl() + 'jackie/images/set_featured_image/';        // UPDATE URL HERE
+
+            location.href = url + $('.img-selected').attr('id') + "/" + $('#listing-id').val();   
+            
+        });
+        
+    }); // End edit listing images events
     
+    
+    // When edit images modal closed, remove data from dom
     $('.close-images').on('click', function() {
        $('#edit-images-modal-content').remove('#edit-images-form'); 
     });

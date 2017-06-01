@@ -19,7 +19,31 @@
                 <!-- Listings Tab -->
                 <div class="tab-pane fade active in" id="listings">
                     <div>
-                        <?php include_once 'includes/listings-slider.php'; ?>
+                        
+                        <!-- MARKED FOR REMOVAL -->
+                        <?php //include_once 'includes/listings-slider.php'; ?>
+                        
+                        
+                        <div class="container col-xs-12">
+                            <?php foreach($listings as $listing) :?>
+                                <?php $image = Image::getImageById($listing->getFeaturedImage()) ?>
+                                <div class="row well">
+                                    <div class="col-sm-6">
+                                        <img src="<?= base_url('img/uploads/') . $image->getFilename() ?>" class="img img-responsive" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h3><?= $listing->getAddress() ?></h3>
+                                        <p>$<?= $listing->getPrice() ?><p>
+                                        <p><?= $listing->getNeighborhood() ?></p>
+                                        
+                                    </div>
+                                </div>
+                            
+                            <?php endforeach; ?>
+                        </div>
+                        
+                        
+                        
                     </div>
                 </div> <!-- End listings tab content -->
 

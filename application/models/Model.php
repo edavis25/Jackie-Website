@@ -7,6 +7,8 @@ class Model extends CI_Model {
     
     public function __construct($id = null) {
         $this->setId($id);
+        // Need to turn on foreign key support with every connectin in SQLite
+        $this->db->simple_query('PRAGMA foreign_keys = on');
     }
     
     public function getId() {

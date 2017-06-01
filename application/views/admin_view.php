@@ -1,7 +1,7 @@
 <?php require_once 'includes/header.php'; ?>
 
 <!-- Show any flash data -->
-<?php if($this->session->flashdata() !== null) : ?>
+<?php if (!empty($this->session->flashdata())) : ?>
     <div class="alert alert-dismissible alert-<?= $this->session->flashdata('message_type') ?>">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <strong><?= html_entity_decode($this->session->flashdata('message_content')) ?></strong>
@@ -19,12 +19,13 @@
     </div>
 </div>
 
-
+<!-- Edit Existing Listings Panel -->
 <div class="panel panel-warning">
     <div class="panel-heading">
         <h3 class="panel-title">Edit Listings</h3>
     </div>
     <div class="panel-body">
+        
         <?php foreach ($listings as $listing) : ?>
             <section class="row">
                 <div class="container-fluid well">
@@ -51,11 +52,11 @@
 
                     <div class="help-block col-xs-12 col-sm-3">
                         <div class="delete-wrapper">
-                            <a href="##" class="btn btn-danger delete-button">Delete</a>
+                            <a href="##" class="btn btn-danger delete-button">Delete Listing</a>
                             <span class="confirm-delete" style="display: none;"> 
-                                <form action=" " method="POST" class="inline">
+                                <form action="<?= base_url('listings/delete_listing') ?>" method="POST" class="inline">
                                     <input type="submit" class="btn" value="yes" />
-                                    <input type="hidden" name='delete-id' value=" " />
+                                    <input type="hidden" name='delete-id' value="<?= $listing->getId() ?>" />
                                 </form>
                                 /<a href="##" class="delete-button btn">no</a>
                             </span>
@@ -67,6 +68,7 @@
 
     </div>
 </div>
+
 
 <!-- Edit Listing Modal -->
 <div class="modal fade" id="listing-modal" role="dialog">
