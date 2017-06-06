@@ -12,11 +12,15 @@ class Images extends CI_Controller {
     
     
     // Edit listing images modal (called by AJAX)
-    public function edit_images() {
+    public function edit_images($listingId = null) {
         
         $data = array();
         
-        $listingId = $this->input->get('listing-id');
+        // If listing id not sent as parameter check GET
+        if (!$listingId) {
+            $listingId = $this->input->get('listing-id');   
+        }
+        
         $listing = Listing::getListingById($listingId);
         
         $data['featured_image'] = Image::getImageById($listing->getFeaturedImage());
@@ -32,7 +36,8 @@ class Images extends CI_Controller {
         
         uploadGalleryImages($listing_id, 'uploads');
         
-        redirect(base_url('admin'));
+        //redirect(base_url('admin'));
+        $this->edit_images($listing_id);    // Call edit_images to refresh content for AJAX call
     }
     
     
@@ -42,48 +47,29 @@ class Images extends CI_Controller {
         $listing->setFeaturedImage($image_id);
         $listing->update();
         
-        $this->session->set_flashdata('message_type', 'success');
-        $this->session->set_flashdata('message_content', 'Featured imaged changed for ' . $listing->getAddress());
-        redirect(base_url('admin'));
+        //$this->session->set_flashdata('message_type', 'success');
+        //$this->session->set_flashdata('message_content', 'Featured imaged changed for ' . $listing->getAddress());
+        
+        //redirect(base_url('admin'));
+        $this->edit_images($listing_id);    // Call edit_images to refresh content for AJAX call
     }
     
     
     public function delete_images() {
         // Hidden fields created in javascript
         $ids = $this->input->post('delete-ids');
-        
-        /*
-        $flash_error = false;
-        $flash_content = '';
-        
-        foreach($ids as $id) {
-            $img = Image::getImageById($id);
-            $filename = $img->getFilename();
-            
-            $path = FCPATH . "img/uploads/$filename";
-            
-            if (is_writable($path)) {
-                $img->delete();
-                unlink($path);
-                $flash_content .= "Image $filename removed successfully!<br />";
-            }
-            else {
-                $flash_content .= "Error: $filename does not exist or does not have permission to delete.<br />";
-                $flash_error = true;
-            }
-        }
-        
-        $this->session->set_flashdata('message_type', ($flash_error) ? 'danger' : 'success');
-        $this->session->set_flashdata('message_content', $flash_content);
-         */
+        $listing_id = $this->input->post('listing-id');
         
         $this->load->helper('images');
         $flash_info = remove_images($ids);
         
-        $this->session->set_flashdata('message_type', ($flash_info['error']) ? 'danger' : 'success');
-        $this->session->set_flashdata('message_content', $flash_info['status']);
+        // FLASHDATA NOT USED SINCE SWITCHED TO AJAX
         
-        redirect(base_url('admin'));
+        //$this->session->set_flashdata('message_type', ($flash_info['error']) ? 'danger' : 'success');
+        //$this->session->set_flashdata('message_content', $flash_info['status']);
+        
+        //redirect(base_url('admin'));
+        $this->edit_images($listing_id);    // Call edit_images to refresh content for AJAX call
     }
     
     

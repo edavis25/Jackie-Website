@@ -7,8 +7,8 @@
                     Upload New Images
                 </div>
                 <div class="panel-body">
-                    <form method="POST" action="<?= base_url('images/add_images') ?>" class="container-fluid form-horizontal" enctype="multipart/form-data">
-                        <input type="file" name="uploads[]" accept="image/*" class="btn btn-default btn-file inline-block" multiple required />
+                    <form method="POST" action="<?= base_url('images/add_images') ?>" class="container-fluid form-horizontal" enctype="multipart/form-data" id="upload-images-form">
+                        <input type="file" name="uploads[]" accept="image/*" class="btn btn-default btn-file inline-block" multiple required id="uploads" />
                         <input type="submit" id="upload-images-button" value="Upload Images" class="btn btn-success img-btn float-right" /> 
                         <input type="reset" class="btn btn-default img-btn float-right" />
                         <input type="hidden" name="listing-id" value="<?= $listing->getId() ?>" />
@@ -63,12 +63,12 @@
         
         <input type="hidden" id="listing-id" value="<?= $listing->getId() ?>" />
 
-        <form method="POST" action="<?= base_url('images/delete_images') ?>">
-            <input type="submit" id="delete-image-button" value="Delete Images" class="btn btn-danger float-right img-btn" />
+        <form method="POST" action="<?= base_url('images/delete_images') ?>" id="delete-images-form">
+            <input type="submit" id="delete-image-button" value="Delete Images" class="btn btn-danger float-right img-btn" disabled />
             <div id="hidden-div"></div>
         </form>
 
-        <input type="button" id="set-featured-image-button" value="Set Featured Image" class="btn btn-info float-right img-btn">
+        <input type="button" id="set-featured-image-button" value="Set Featured Image" class="btn btn-info float-right img-btn" disabled />
 
 
     </div>

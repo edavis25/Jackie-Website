@@ -12,8 +12,16 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>   
+   
+    <!-- Fancybox Plugin -->
+    <script src="<?= base_url('vendor/fancybox/jquery.fancybox.js')?>"></script>
+    
+    
     <!-- Custom JavaScript & document.ready() initializations -->
+    <!-- NOTE: For deployment, minimize & concat all files -->
     <script src="<?= base_url('js/jackie-plank.js'); ?>"></script>
+    <script src="<?= base_url('js/listings.js'); ?>"</script>
+    
     
     <!-- JavaScript code snippet for embedded Facebook page -->
     <div id="fb-root"></div>

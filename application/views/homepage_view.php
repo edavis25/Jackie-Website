@@ -9,13 +9,14 @@
 
             <div id="featured-carousel" class="carousel slide">
                 <div class="text-center">Featured Listings</div>
-
+                
                 <!-- Dot Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#featured-carousel" data-slide-to="0" class="active"></li>
                     <li data-target="#featured-carousel" data-slide-to="1"></li>
                     <li data-target="#featured-carousel" data-slide-to="2"></li>
                 </ol>
+                
                 <!-- Carousel Items -->
                 <div class="carousel-inner">
                     <div class="active item">  
@@ -45,7 +46,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <!-- Carousel Navigation -->
                 <a class="left carousel-control" href="#featured-carousel" data-slide="prev">

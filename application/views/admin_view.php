@@ -100,6 +100,7 @@
                 <button type="button" class="close close-images" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Edit Listing Images</h4>
             </div>
+            
             <div class="modal-body">
                 
                 <div id="edit-images-modal-content"></div>

@@ -55,6 +55,11 @@ body {
 #featured-carousel .carousel-inner {
   box-shadow: -10px 10px 10px #888888;
 }
+@media (min-width: 1560px) {
+  #featured-carousel .carousel-caption {
+    margin-bottom: 3%;
+  }
+}
 .confirm-delete {
   display: inline;
 }

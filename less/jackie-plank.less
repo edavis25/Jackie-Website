@@ -76,6 +76,14 @@ body {
     .carousel-inner {
         box-shadow: -10px 10px 10px #888888;
     }
+    
+    .carousel-caption {
+        // Caption needs extra bottom margin above 1560px
+        @media(min-width: 1560px) {
+            margin-bottom: 3%;
+        }
+    }
+    
 }
 
 // Delete confirm div

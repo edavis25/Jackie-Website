@@ -37,6 +37,7 @@
                                         <p><?= $listing->getNeighborhood() ?></p>
                                         
                                     </div>
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#gallery-modal">View Photos</button>
                                 </div>
                             
                             <?php endforeach; ?>
@@ -60,4 +61,29 @@
     
 </div> <!-- End main page fluid row -->
 
+
+<!-- Gallery Images Modal -->
+<div class="modal fade" id="gallery-modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Title</h4>
+            </div>
+            <div class="modal-body">
+                <div id="gallery-modal-content"></div>
+                <a data-fancybox="gallery" href="img/agnes150.jpg"><img src="img/agnes150.jpg"></a>
+                <a data-fancybox="gallery" href="img/agnes150.jpg"><img src="img/agnes150.jpg"></a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php require_once 'includes/footer.php'; ?>
+
+
+

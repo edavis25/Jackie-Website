@@ -51,7 +51,7 @@ $(document).ready(function() {
      * AJAX Calls
      * 
      * NOTE: The URLs will need changed when deployed on live server (remove 'jackie' from url)
-     */
+     *
     $('.edit-listing-btn').on('submit', function(event) {
        event.preventDefault();
        var url = getRootUrl() + 'jackie/listings/edit_listing?';        // UPDATE URL HERE
@@ -111,6 +111,7 @@ $(document).ready(function() {
     $('.close-images').on('click', function() {
        $('#edit-images-modal-content').remove('#edit-images-form'); 
     });
+    */
 });
 
 
@@ -191,7 +192,9 @@ function getRootUrl() {
 }
 
 
-// POST request
+// REVIEW FOR DELETION (replaced with jQuery AJAX)
+
+/* POST request
 function postAjaxRequest(callback, url, args) {
     var contentType = 'application/x-www-form-urlencoded';
     var ajax = new createAjaxObject(callback);
@@ -248,3 +251,4 @@ function createAjaxObject(callback) {
     }
     return ajax;
 }
+*/
