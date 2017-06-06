@@ -13,7 +13,6 @@ class Images extends CI_Controller {
     
     // Edit listing images modal (called by AJAX)
     public function edit_images($listingId = null) {
-        
         $data = array();
         
         // If listing id not sent as parameter check GET

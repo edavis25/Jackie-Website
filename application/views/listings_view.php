@@ -37,7 +37,11 @@
                                         <p><?= $listing->getNeighborhood() ?></p>
                                         
                                     </div>
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#gallery-modal">View Photos</button>
+                                    <form class="gallery-form">
+                                        <input type="hidden" value="<?= $listing->getId() ?>" name="listing-id" />
+                                        <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#gallery-modal">View Photos</button>
+                                    </form>
+                                    
                                 </div>
                             
                             <?php endforeach; ?>
@@ -73,8 +77,10 @@
             </div>
             <div class="modal-body">
                 <div id="gallery-modal-content"></div>
-                <a data-fancybox="gallery" href="img/agnes150.jpg"><img src="img/agnes150.jpg"></a>
-                <a data-fancybox="gallery" href="img/agnes150.jpg"><img src="img/agnes150.jpg"></a>
+                
+                <!--a data-fancybox="gallery" href="img/agnes150.jpg"><img src="img/agnes150.jpg"></a>
+                <a data-fancybox="gallery" href="img/agnes150.jpg"><img src="img/agnes150.jpg"></a-->
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

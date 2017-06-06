@@ -133,6 +133,12 @@ body {
 .bordered {
   border: 1px solid #eaeaea;
 }
+.bot-5 {
+  margin-bottom: 5px;
+}
+.bot-10 {
+  margin-bottom: 10px;
+}
 .center-image {
   display: block;
   margin-left: auto;
@@ -149,6 +155,9 @@ body {
 }
 .inline-block {
   display: inline-block !important;
+}
+.modal-open .no-jump {
+  overflow-y: scroll;
 }
 .table-fixed {
   table-layout: fixed;

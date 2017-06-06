@@ -26,7 +26,6 @@ body {
     //transform: scale(0.90);
     //transform-origin: center top;
     //height: 100vh;
-     
 }
 
 @media (min-width: 1200px) {
@@ -180,6 +179,13 @@ body {
     border: 1px solid #eaeaea;
 }
 
+.bot-5 {
+    margin-bottom: 5px;
+}
+.bot-10 {
+    margin-bottom: 10px;
+}
+
 .center-image {
     display: block;
     margin-left: auto;
@@ -200,6 +206,11 @@ body {
 
 .inline-block {
     display: inline-block !important;
+}
+
+// Stop shifting content for fixed content when modal opens
+.modal-open .no-jump {
+    overflow-y: scroll;
 }
 
 .table-fixed {

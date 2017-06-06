@@ -1,4 +1,4 @@
-        <footer class="container">
+        <footer class="container-fluid">
             <hr style="border: 1px solid white" />
             <p>The Jackie Plank Team&trade; 2017</p>
             <img src="<?= base_url('img/realtor-icon.png')?>" alt="Realtor logo" class="img img-responsive logo-icon"/>
@@ -15,8 +15,7 @@
    
     <!-- Fancybox Plugin -->
     <script src="<?= base_url('vendor/fancybox/jquery.fancybox.js')?>"></script>
-    
-    
+
     <!-- Custom JavaScript & document.ready() initializations -->
     <!-- NOTE: For deployment, minimize & concat all files -->
     <script src="<?= base_url('js/jackie-plank.js'); ?>"></script>

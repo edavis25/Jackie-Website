@@ -128,8 +128,7 @@ $(document).ready(function () {
                }
             });
         });
-        
-        
+
     }); // End edit listing images events
 
 
@@ -137,4 +136,18 @@ $(document).ready(function () {
     $('.close-images').on('click', function () {
         $('#edit-images-modal-content').remove('#edit-images-form');
     });
+    
+    
+    // View listing photo gallery
+    $('.gallery-form').on('submit', function(event) {
+        event.preventDefault();
+        var formData = $(this).serialize();
+        var url = getRootUrl() + 'jackie/gallery';
+        
+        $.get(url, formData, function(data) {
+            $('#gallery-modal-content').html(data);
+        });
+    });
+    
+    
 });
