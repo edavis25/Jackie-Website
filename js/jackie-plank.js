@@ -1,5 +1,10 @@
 
 $(document).ready(function() {
+    
+    // Initialize scroll reveal
+    window.sr = ScrollReveal();
+    sr.reveal('.reveal', { duration: 1500, viewFactor: 0.6 }, 125);
+    
     // Add "modal-resizable" class to the Bootstap "modal-content" div class property
     $('.modal-resizable').resizable({
         minHeight: 300,

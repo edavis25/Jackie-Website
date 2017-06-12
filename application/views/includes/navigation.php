@@ -21,7 +21,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="<?= base_url('home')?>"><span class="glyphicon glyphicon-home <?= ($active == 'home') ? 'active' : ''?>"></span></a></li>
+                <li><a href="<?= base_url('home')?>"><i class="fa fa-home <?= ($active == 'home') ? 'active' : ''?>" aria-hidden="true"></i></a></li>
                 <li><a href="<?= base_url('listings')?>" class="<?= ($active == 'listings') ? 'active' : ''?>">Listings</a></li>
                 <!-- li><a href="#">About</a></li -->
                 <li><a href="<?= base_url('faq/buyers')?>" class="<?= ($active == 'buyers') ? 'active' : ''?>">Buyers</a></li>

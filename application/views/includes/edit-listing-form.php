@@ -72,7 +72,7 @@
         <div class="form-group col-xs-12 align-right">
             <div>
                 <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
             </div>
         </div>
 

@@ -8,17 +8,32 @@
  * 
  * CONTENTS
  * =============
- * I. 	Body - Stylings for the page body
+ * I. 	Elements & Bootstrap - Stylings for HTML elements
  * II.	Header & Nav - Stylings for the Header & NavBar
  * III. Content - Stylings for the page main content
  * IV.	Generic - Generic stylings for any element
  * 
  =================================================================== */
 /* =============================================
- * ==  I. Body		========================
+ * ==  I. Elements & Bootstrap Overrides    ====
  * ============================================= */
-body {
-  background-color: #eee;
+body a {
+  color: #E8752F;
+}
+blockquote {
+  font-size: 1em;
+}
+.btn-default {
+  background-color: #e5e5e5;
+  color: black;
+}
+.glyphicon-plus,
+.glyphicon-minus {
+  font-size: 1.5em;
+  font-weight: 900;
+}
+hr {
+  border-color: #f29c3d;
 }
 @media (min-width: 1200px) {
   #page-wrapper {
@@ -27,38 +42,73 @@ body {
     margin-right: auto;
   }
 }
+.panel-title {
+  color: #E8752F;
+}
+.well {
+  border-left: none;
+  border-right: none;
+  border-radius: 0px !important;
+}
 /* =============================================
  * ==  II. Header & Nav		================
  * ============================================= */
-.navbar-default .navbar-nav .active {
-  color: red;
+/*
+.navbar-default {
+    .navbar-nav {
+        .active {
+            color: @red;
+            a {
+                color: @red;
+            }
+        }
+        a:hover {
+            color: @red !important;
+        }
+    }
 }
-.navbar-default .navbar-nav .active a {
-  color: red;
+*/
+.navbar-default {
+  background-color: #f29c3d !important;
+  border-color: #f29c3d !important;
 }
-.navbar-default .navbar-nav a:hover {
-  color: red !important;
+.navbar-default .navbar-toggle {
+  background-color: #f29c3d !important;
+  border-color: #fff !important;
 }
-.navbar-fixed-top {
-  background-color: #f4f4f4;
+.navbar-default .navbar-collapse {
+  border-color: #f29c3d !important;
+}
+.navbar-default a:hover {
+  background-color: #E5943A !important;
 }
 /* =============================================
  * ==  III. Content     ========================
  * ============================================= */
+/*/ Homepage carousel
 #featured-carousel {
-  max-width: 800px;
-  max-height: 450px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 4%;
+    
+    max-width: 800px;
+    max-height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4%;
+    
+    .carousel-inner {
+        box-shadow: -10px 10px 10px #888888;
+    }
+    
+    .carousel-caption {
+        // Caption needs extra bottom margin above 1560px
+        @media(min-width: 1560px) {
+            margin-bottom: 3%;
+        }
+    }
+    
 }
-#featured-carousel .carousel-inner {
-  box-shadow: -10px 10px 10px #888888;
-}
-@media (min-width: 1560px) {
-  #featured-carousel .carousel-caption {
-    margin-bottom: 3%;
-  }
+*/
+#carousel-thumbnails {
+  margin-top: -50px;
 }
 .confirm-delete {
   display: inline;
@@ -67,8 +117,28 @@ body {
   display: inline-block;
   margin-top: 20px;
 }
+.home-carousel {
+  max-width: 750px;
+  max-height: 500px;
+}
 .img-btn {
   margin-right: 10px;
+}
+.img-caption {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  position: absolute;
+  bottom: 0;
+  font-size: 1.2em;
+  padding: 0px 10px 10px 10px;
+}
+.img-caption h3 {
+  margin-bottom: 0px;
+}
+@media (max-width: 500px) {
+  .img-caption h3 {
+    font-size: 1em;
+  }
 }
 .myIframe {
   position: relative;
@@ -117,6 +187,10 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+.quick-links {
+  margin-top: -15px;
+  padding-bottom: 20px;
+}
 /* =============================================
  * ==  V. Generic & Helper Classes  ============
  * ============================================= */
@@ -143,6 +217,12 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.center-text {
+  text-align: center;
+}
+.center-text a {
+  text-align: center;
 }
 .float-right {
   float: right;

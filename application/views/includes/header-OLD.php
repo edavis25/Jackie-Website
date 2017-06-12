@@ -11,20 +11,16 @@
         <title>Jackie Plank | Realtor</title>
 
         <!-- Bootstrap Core CSS -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="<?= base_url('css/united.min.css')?>" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- jQuery CSS -->
         <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"> 
 
         <!-- Template CSS -->
-        <link href="<?= base_url('css/portfolio-item.css') ?>" rel="stylesheet">
+        <link href="<?= base_url('css/small-business.css') ?>" rel="stylesheet">
 
         <!-- Fancybox Gallery Plugin -->       
         <link href="<?= base_url('vendor/fancybox/jquery.fancybox.css')?>" rel="stylesheet">
-        
-        <!-- Flexslider Plugin -->
-        <link href="<?= base_url('vendor/flexslider/flexslider.css') ?>" rel="stylesheet">
         
         <!-- Custom CSS -->
         <link rel="stylesheet" href="<?= base_url('css/jackie-plank.css') ?>">

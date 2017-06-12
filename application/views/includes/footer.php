@@ -15,11 +15,42 @@
    
     <!-- Fancybox Plugin -->
     <script src="<?= base_url('vendor/fancybox/jquery.fancybox.js')?>"></script>
+    
+    <!-- Flexslider Plugin -->
+    <script src="<?= base_url('vendor/flexslider/jquery.flexslider-min.js') ?>"></script>
+    <script>
+        $(document).ready(function() {
+        // The slider being synced must be initialized first
+            $('#carousel-thumbnails').flexslider({
+                animation: "slide",
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                itemWidth: 150,
+                itemMargin: 5,
+                asNavFor: '#homepage-slider',
+                touch: true
+            });
+        
+            $('#homepage-slider').flexslider({
+                animation: "slide",
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                sync: "#carousel-thumbnails",
+                touch: true,
+                multipleKeyboard: true
+            });
+        });
+    </script>
+    
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 
     <!-- Custom JavaScript & document.ready() initializations -->
     <!-- NOTE: For deployment, minimize & concat all files -->
     <script src="<?= base_url('js/jackie-plank.js'); ?>"></script>
-    <script src="<?= base_url('js/listings.js'); ?>"</script>
+    <script src="<?= base_url('js/listings.js'); ?>"></script>
     
     
     <!-- JavaScript code snippet for embedded Facebook page -->
