@@ -52,6 +52,22 @@ $(document).ready(function() {
     });
     
     
+    $('#request-info-form').on('submit', function(event) {
+        event.preventDefault();
+        var formData = $(this).serialize();
+        $.ajax({
+            url: $(this).attr('action'),
+            type: "POST",
+            data: formData,
+            success: function (data) {
+                $('#message-sent-status').html(data);
+            },
+            error: function () {
+                alert("ERROR: There was a problem sending your message.");
+            }
+        });
+    });
+    
     /*
      * AJAX Calls
      * 

@@ -24,9 +24,6 @@
                 <div class="tab-pane fade active in" id="listings">
                     <div>
                         
-                        <!-- MARKED FOR REMOVAL -->
-                        <?php //include_once 'includes/listings-slider.php'; ?>          
-                        
                         <div class="container col-xs-12">
                             <?php foreach($listings as $listing) :?>
                                 <?php $image = Image::getImageById($listing->getFeaturedImage()) ?>
@@ -35,7 +32,7 @@
                                         <img src="<?= base_url('img/uploads/') . $image->getFilename() ?>" class="img img-responsive" />
                                     </div>
                                     <div class="col-sm-8">
-                                        <a><h3><?= $listing->getAddress() ?></h3></a>
+                                        <a href="<?= base_url('listings/view_listing/') . $listing->getId() ?>"><h3><?= $listing->getAddress() ?></h3></a>
                                         <h5 class="float-right">$<?= $listing->getPrice() ?></h5>
                                         <p><?= $listing->getNeighborhood() ?></p>
                                         <p>
@@ -50,7 +47,7 @@
                                     </div>
                                     
                                     <!--form class="gallery-form">
-                                        <input type="hidden" value="<?= $listing->getId() ?>" name="listing-id" />
+                                        <input type="hidden" value="" name="listing-id" />
                                         <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#gallery-modal">View Photos</button>
                                     </form-->
                                     
@@ -77,7 +74,7 @@
     
 </div> <!-- End main page fluid row -->
 
-
+<!-- MARKED FOR REMOVAL (ALSO CHECK AJAX CALL -->
 <!-- Gallery Images Modal -->
 <div class="modal fade" id="gallery-modal" role="dialog">
     <div class="modal-dialog modal-lg">

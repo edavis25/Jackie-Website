@@ -8,7 +8,10 @@
         <!--a href="" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Back to Listings</a>
         <br /><br / -->
         
-        <h1><?= $listing->getAddress() ?></h1>
+        <h1>
+            <?= $listing->getAddress() ?>
+            <small><span class="text-muted"><?= $listing->getNeighborhood() . ', ' . $listing->getZip()?></span></small>
+        </h1>
         
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#info-tab">Listing Information</a></li>
@@ -85,10 +88,6 @@
                         <b>Median Rent</b><br />
                         <?= $demo['Households']['MedianRent'] ?>
                     </div>
-                    <!--ul class="list-unstyled" id="demographics-list">
-                        <li>1</li>
-                        <li>2</li>
-                    </ul-->
                 </div>
                 
                 <br />
@@ -99,8 +98,6 @@
                     <div id="age-chart" style="width:100%; height:350px;"></div>
                 </div>
                 
-                <br />
-                <hr style="border-color: #D3D3D3" />
                 
                 <div class="row">
                     <h3 class="orange">Education</h3>
@@ -112,6 +109,26 @@
                     </div>
                 </div>
                 
+                <div class="row">
+                    <h3 class="orange">Income &amp; Employment</h3>
+                    <div class="col-sm-6">
+                        <div id="annual-income-chart" style="width:100%; height:350px;"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="commute-chart" style="width:100%; height:350px;"></div>
+                    </div>
+                </div>
+                
+                <br />
+                
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div id="employment-type-chart" style="width:100%; height:350px"></div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div id="collar-type-chart" style="width:100%; height:300px"></div>
+                    </div>
+                </div>
                 
             </div> <!-- End Demographics Tab -->    
         </div>
@@ -131,11 +148,14 @@
 <script src="<?= base_url('js/charts.js'); ?>"></script>
 <script>
     $(document).ready(function() {
+        // Call Highcharts initilization functions with JSON data
         ageChart(<?= json_encode($demo['Population']['Ages']['Keys']) ?>, <?= json_encode($demo['Population']['Ages']['Values']) ?>);
-        
         highestEducationChart(<?= json_encode($demo['Education']['Level']['Keys']) ?>, <?= json_encode($demo['Education']['Level']['Values']['Highest Level Completed']) ?>);
-        
         currentEnrollmentChart(<?= json_encode($demo['Education']['Enrolled']['Keys'])?>, <?= json_encode($demo['Education']['Enrolled']['Values']['Current Enrollment']) ?>);
+        annualIncomeChart(<?= json_encode($demo['Wealth']['Incomes']['Keys']) ?>, <?= json_encode($demo['Wealth']['Incomes']['Values']['Incomes']) ?>);        
+        commuteChart(<?= json_encode($demo['Wealth']['Commute']['Keys']) ?>, <?= json_encode($demo['Wealth']['Commute']['Values']['Commute']) ?>);
+        employmentTypeChart(<?= json_encode($demo['Wealth']['Occupations']['Keys']) ?>, <?= json_encode($demo['Wealth']['Occupations']['Values']['Occupations']) ?>);
+        collarTypeChart(<?= json_encode($demo['Wealth']['EmployeeClass']['Keys']) ?>, <?= json_encode($demo['Wealth']['EmployeeClass']['Values']['Employment Class']) ?>);
     });
 </script>
 <?php require_once 'includes/footer.php' ?>

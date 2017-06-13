@@ -60,13 +60,22 @@ hr {
     border-color: @primary-orange;
 }
 
+label {
+    &.required:after {
+        content: " *"; 
+        color: red;
+    }
+}
 
 #page-wrapper {
     @media (min-width: 1200px) {
-        width: 75%;
+        width: 90%;
         margin-left: auto;
         margin-right: auto;
-    }   
+    }
+    @media (min-width: 1500px) {
+        width: 75%;
+    }
 }
 
 
@@ -270,8 +279,8 @@ nav {
     padding-bottom: 20px;
 }
 
-#request-info-form {
-    padding: 15px;
+#request-info-container {
+    //padding: 15px;
     border-radius: 5px;
 }
 

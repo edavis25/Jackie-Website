@@ -44,22 +44,13 @@ class Listings extends CI_Controller {
         
         // Get JSON from demographics database
         $demo_db = $this->load->database('demographics', TRUE);
-        $zip = $data['listing']->getZip();   
-        $results = $demo_db->query("SELECT json FROM data WHERE zip = '$zip'");
-        $data['demo'] = json_decode($results->result()[0]->json, true);
-        
+        $zip = $data['listing']->getZip();
+        if ($zip) {
+            $results = $demo_db->query("SELECT json FROM data WHERE zip = '$zip'");
+            $data['demo'] = json_decode($results->result()[0]->json, true);   
+        }
         
         //var_dump($data['demo']); die;
-        // Get demographic values
-        //$data['demographics'] = array();
-        //$data['demographics']['population'] = $json['Population']['Total'];
-        //$data['demographics']['density'] = $json['Population']['Density'];
-        //$data['demographics']['median_age'] = $json['Population']
-        
-        
-        //var_dump($data['demographics']); die;
-        //var_dump($json); die;
-
         $this->load->view('view_listing_view', $data);
     }
     

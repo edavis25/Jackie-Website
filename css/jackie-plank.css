@@ -43,11 +43,20 @@ blockquote {
 hr {
   border-color: #f29c3d;
 }
+label.required:after {
+  content: " *";
+  color: red;
+}
 @media (min-width: 1200px) {
   #page-wrapper {
-    width: 75%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+@media (min-width: 1500px) {
+  #page-wrapper {
+    width: 75%;
   }
 }
 .panel-title {
@@ -210,8 +219,7 @@ nav {
   margin-top: -15px;
   padding-bottom: 20px;
 }
-#request-info-form {
-  padding: 15px;
+#request-info-container {
   border-radius: 5px;
 }
 /* =============================================
