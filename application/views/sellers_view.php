@@ -4,7 +4,11 @@
 <!-- Main page row -->
 <div class="row row-fluid">
 
-    <?php require_once 'includes/jackie-sidebar.php'; ?>
+    <div class="container col-md-4 col-md-push-8">
+        <div class="container col-md-12">
+            <?php require_once 'includes/jackie-sidebar.php'; ?>
+        </div>
+    </div>
 
     <!-- Main page content -->
     <div class="col-md-8 col-md-pull-4">

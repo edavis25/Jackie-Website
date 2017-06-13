@@ -29,6 +29,8 @@ body {
     //transform: scale(0.90);
     //transform-origin: center top;
     //height: 100vh;
+    
+    overflow-y: scroll;
     a {
         color: #E8752F;
     }
@@ -43,6 +45,12 @@ blockquote {
     color: black;
 }
 
+.btn-primary {
+    background-color: @primary-orange;
+    color: white;
+    border: none;
+}
+
 .glyphicon-plus, .glyphicon-minus {
     font-size: 1.5em;
     font-weight: 900;
@@ -52,13 +60,15 @@ hr {
     border-color: @primary-orange;
 }
 
-@media (min-width: 1200px) {
-    #page-wrapper {
+
+#page-wrapper {
+    @media (min-width: 1200px) {
         width: 75%;
         margin-left: auto;
         margin-right: auto;
-    }
+    }   
 }
+
 
 .panel-title {
     color: #E8752F;
@@ -92,6 +102,10 @@ hr {
 
 .navbar-fixed-top {
     //background-color: #f4f4f4;	
+}
+
+nav {
+    font-size: 1.2em;
 }
 
 .navbar-default {
@@ -149,6 +163,10 @@ hr {
     display: inline;
 }
 
+#demo-tab {
+    font-size: 1.2em;
+}
+
 // Listings Galleries
 .gallery {
     display: inline-block;
@@ -156,8 +174,8 @@ hr {
 }
 
 .home-carousel {
-    max-width: 750px;
-    max-height: 500px;
+    max-height: 550px;
+    max-width: auto;
 }
 
 .img-btn {
@@ -209,6 +227,13 @@ hr {
     margin-right: auto;
 }
 
+.listing-preview {
+    padding-bottom: 25px; 
+    margin-top: 25px; 
+    border-bottom: 1px solid #D3D3D3;
+}
+
+
 // Team Member Images
 #drew-picture {
     float: left;
@@ -245,6 +270,12 @@ hr {
     padding-bottom: 20px;
 }
 
+#request-info-form {
+    padding: 15px;
+    border-radius: 5px;
+}
+
+
 /* =============================================
  * ==  V. Generic & Helper Classes  ============
  * ============================================= */
@@ -263,7 +294,7 @@ hr {
 }
 
 .bordered {
-    border: 1px solid #eaeaea;
+    border: 1px solid #D3D3D3;
 }
 
 .bot-5 {
@@ -271,6 +302,14 @@ hr {
 }
 .bot-10 {
     margin-bottom: 10px;
+}
+
+.bot-pad-5 {
+    padding-bottom: 1px;
+}
+
+.bot-pad-10 {
+    padding-bottom: 10px;
 }
 
 .center-image {
@@ -305,6 +344,10 @@ hr {
 // Stop shifting content for fixed content when modal opens
 .modal-open .no-jump {
     overflow-y: scroll;
+}
+
+.orange {
+    color: @primary-orange;
 }
 
 .table-fixed {

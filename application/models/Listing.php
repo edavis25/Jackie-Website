@@ -8,6 +8,7 @@ class Listing extends Model {
     private static $db;
     protected $address;
     protected $neighborhood;
+    protected $zip;
     protected $price;
     protected $sq_ft;
     protected $bedrooms;
@@ -28,6 +29,8 @@ class Listing extends Model {
         $this->setAdditional(safeGet($array, 'additional', null));
         $this->setFeaturedImage(safeGet($array, 'featured_image', null));
         $this->setListingType(safeGet($array, 'listing_type', null));
+        $this->setZip(safeGet($array, 'zip', null));
+     
     }
     
     public function getAddress() {
@@ -42,6 +45,13 @@ class Listing extends Model {
     }
     public function setNeighborhood($neigh) {
         $this->neighborhood = $neigh;
+    }
+    
+    public function getZip() {
+        return $this->zip;
+    }
+    public function setZip($zip) {
+        $this->zip = $zip;
     }
     
     public function getPrice() {
@@ -97,6 +107,7 @@ class Listing extends Model {
         $data = array(
             'address' => $this->getAddress(),
             'neighborhood' => $this->getNeighborhood(),
+            'zip' => $this->getZip(),
             'price' => $this->getPrice(),
             'sq_ft' => $this->getSq_ft(),
             'bedrooms' => $this->getBedrooms(),
@@ -114,6 +125,7 @@ class Listing extends Model {
         $data = array(
             'address' => $this->getAddress(),
             'neighborhood' => $this->getNeighborhood(),
+            'zip' => $this->getZip(),
             'price' => $this->getPrice(),
             'sq_ft' => $this->getSq_ft(),
             'bedrooms' => $this->getBedrooms(),

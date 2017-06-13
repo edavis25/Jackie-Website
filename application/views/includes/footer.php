@@ -6,10 +6,7 @@
             <img src="<?= base_url('img/equal-housing.png')?>" alt="Equal Housing Opportunity logo" class="img img-responsive logo-icon" />
         </footer>
     </div> <!-- End page container (opened in header) -->
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+ 
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>   
    
@@ -46,12 +43,15 @@
     
     <!-- Scroll Reveal -->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    
+    <!-- Highcharts -->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    
 
     <!-- Custom JavaScript & document.ready() initializations -->
     <!-- NOTE: For deployment, minimize & concat all files -->
     <script src="<?= base_url('js/jackie-plank.js'); ?>"></script>
     <script src="<?= base_url('js/listings.js'); ?>"></script>
-    
     
     <!-- JavaScript code snippet for embedded Facebook page -->
     <div id="fb-root"></div>

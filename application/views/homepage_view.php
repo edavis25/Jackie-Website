@@ -4,7 +4,11 @@
 <!-- Portfolio Item Row -->
 <div class="row">
 
-    <?php include 'includes/jackie-sidebar.php' ?>
+    <div class="container col-md-4 col-md-push-8">
+        <div class="container col-md-12">
+            <?php require_once 'includes/jackie-sidebar.php'; ?>
+        </div>
+    </div>
     
     <div class="container col-md-8 col-md-pull-4">
         <!--img class="img-responsive" src="http://placehold.it/750x500" alt=""-->

@@ -1,15 +1,50 @@
 <form action="<?= base_url('listings/add_listing') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
     <fieldset>        
-        <div class="container-fluid form-group">
+        <!-- div class="container-fluid form-group">
             <label for="input-address">Address</label>
-            <input class="form-control" id="input-address" name="address" placeholder="Address" type="text" value="<?= isset($listing) ? $listing->getAddress() : '' ?>">
+            <input class="form-control" id="input-address" name="address" placeholder="Address" type="text" value="">
         </div>
 
         <div class="container-fluid form-group">
             <label for="input-neighborhood">Neighborhood</label>
-            <input class="form-control" id="input-neighborhood" name="neighborhood" placeholder="Neighborhood" type="text" value="<?= isset($listing) ? $listing->getNeighborhood() : '' ?>">
+            <input class="form-control" id="input-neighborhood" name="neighborhood" placeholder="Neighborhood" type="text" value="">
+        </div -->
+        
+        <div class="form-group">
+            <div class="col-xs-12 col-sm-3">
+                <label for="input-address">Address</label>
+                <input class="form-control" id="input-address" name="address" placeholder="Address" type="text" value="<?= isset($listing) ? $listing->getAddress() : '' ?>">
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <label for="input-zip">Zip Code</label>
+                <input class="form-control" id="input-zip" name="zip" placeholder="Zip Code" type="text" value="<?= isset($listing) ? $listing->getZip() : '' ?>">
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <label for="input-neighborhood">Neighborhood</label>
+                <input class="form-control" id="input-neighborhood" name="neighborhood" placeholder="Neighborhood" type="text" value="<?= isset($listing) ? $listing->getNeighborhood() : '' ?>">
+            </div>
+            
+            <div class="col-xs-12 col-sm-3 input-group">
+                <div class="col-xs-12">
+                    <label>Listing Type</label>
+                    <div class="radio">
+                        <label>
+                            <input name="listing-type" id="input-listing" value="sale" default type="radio" <?= (isset($listing) && $listing->getListingType() == 1) ? 'checked' : '' ?> >
+                            For Sale
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            <input name="listing-type" id="input-rental" value="rental" type="radio" <?= (isset($listing) && $listing->getListingType() == 2) ? 'checked' : '' ?> >
+                            Rental
+                        </label>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
+        
+        
         <div class="form-group">
             <div class="col-xs-6 col-sm-3">
                 <label for="input-price">Price</label>
@@ -52,19 +87,7 @@
             </div>
         <?php endif; ?>
 
-        <div class="col-xs-12 col-sm-4 input-group">
-            <label>Listing Type</label>
-            <div class="radio">
-                <label>
-                    <input name="listing-type" id="input-listing" value="sale" default type="radio" <?= (isset($listing) && $listing->getListingType() == 1) ? 'checked' : ''?> >
-                    For Sale
-                </label>
-                <label>
-                    <input name="listing-type" id="input-rental" value="rental" type="radio" <?= (isset($listing) && $listing->getListingType() == 2) ? 'checked' : ''?> >
-                    Rental
-                </label>
-            </div>
-        </div>
+        
         
         <input type="hidden" name="listing-id" value="<?= (isset($listing)) ? $listing->getId() : '' ?>" />
 

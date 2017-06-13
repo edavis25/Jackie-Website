@@ -17,6 +17,9 @@
 /* =============================================
  * ==  I. Elements & Bootstrap Overrides    ====
  * ============================================= */
+body {
+  overflow-y: scroll;
+}
 body a {
   color: #E8752F;
 }
@@ -26,6 +29,11 @@ blockquote {
 .btn-default {
   background-color: #e5e5e5;
   color: black;
+}
+.btn-primary {
+  background-color: #f29c3d;
+  color: white;
+  border: none;
 }
 .glyphicon-plus,
 .glyphicon-minus {
@@ -68,6 +76,9 @@ hr {
     }
 }
 */
+nav {
+  font-size: 1.2em;
+}
 .navbar-default {
   background-color: #f29c3d !important;
   border-color: #f29c3d !important;
@@ -113,13 +124,16 @@ hr {
 .confirm-delete {
   display: inline;
 }
+#demo-tab {
+  font-size: 1.2em;
+}
 .gallery {
   display: inline-block;
   margin-top: 20px;
 }
 .home-carousel {
-  max-width: 750px;
-  max-height: 500px;
+  max-height: 550px;
+  max-width: auto;
 }
 .img-btn {
   margin-right: 10px;
@@ -161,6 +175,11 @@ hr {
   margin-left: auto;
   margin-right: auto;
 }
+.listing-preview {
+  padding-bottom: 25px;
+  margin-top: 25px;
+  border-bottom: 1px solid #D3D3D3;
+}
 #drew-picture {
   float: left;
   margin-right: 10px;
@@ -191,6 +210,10 @@ hr {
   margin-top: -15px;
   padding-bottom: 20px;
 }
+#request-info-form {
+  padding: 15px;
+  border-radius: 5px;
+}
 /* =============================================
  * ==  V. Generic & Helper Classes  ============
  * ============================================= */
@@ -205,13 +228,19 @@ hr {
   color: white;
 }
 .bordered {
-  border: 1px solid #eaeaea;
+  border: 1px solid #D3D3D3;
 }
 .bot-5 {
   margin-bottom: 5px;
 }
 .bot-10 {
   margin-bottom: 10px;
+}
+.bot-pad-5 {
+  padding-bottom: 1px;
+}
+.bot-pad-10 {
+  padding-bottom: 10px;
 }
 .center-image {
   display: block;
@@ -238,6 +267,9 @@ hr {
 }
 .modal-open .no-jump {
   overflow-y: scroll;
+}
+.orange {
+  color: #f29c3d;
 }
 .table-fixed {
   table-layout: fixed;

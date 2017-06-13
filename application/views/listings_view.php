@@ -4,11 +4,15 @@
 <!-- Page Content -->
 <div class="row">
 
-    <?php require_once 'includes/jackie-sidebar.php'; ?>
+    <div class="container col-md-4 col-md-push-8">
+        <div class="container col-md-12">
+            <?php require_once 'includes/jackie-sidebar.php'; ?>
+        </div>
+    </div>
     
     <!-- Tabbed content container -->
     <div class="container col-md-8 col-md-pull-4 tab-container">
-        <div class="row bordered">
+        <div class="row">
             <ul class="larger-text nav nav-tabs">
                 <li class="active"><a href="#listings" data-toggle="tab">Listings</a></li>
                 <li><a href="#rentals" data-toggle="tab">Rental Properties</a></li>
@@ -21,26 +25,34 @@
                     <div>
                         
                         <!-- MARKED FOR REMOVAL -->
-                        <?php //include_once 'includes/listings-slider.php'; ?>
-                        
+                        <?php //include_once 'includes/listings-slider.php'; ?>          
                         
                         <div class="container col-xs-12">
                             <?php foreach($listings as $listing) :?>
                                 <?php $image = Image::getImageById($listing->getFeaturedImage()) ?>
-                                <div class="row well">
-                                    <div class="col-sm-6">
+                                <div class="row listing-preview">
+                                    <div class="col-sm-4">
                                         <img src="<?= base_url('img/uploads/') . $image->getFilename() ?>" class="img img-responsive" />
                                     </div>
-                                    <div class="col-sm-6">
-                                        <h3><?= $listing->getAddress() ?></h3>
-                                        <p>$<?= $listing->getPrice() ?><p>
+                                    <div class="col-sm-8">
+                                        <a><h3><?= $listing->getAddress() ?></h3></a>
+                                        <h5 class="float-right">$<?= $listing->getPrice() ?></h5>
                                         <p><?= $listing->getNeighborhood() ?></p>
-                                        
+                                        <p>
+                                            <?= $listing->getBedrooms() ?> Beds&nbsp;&bull;&nbsp;
+                                            <?= $listing->getBathrooms() ?> Baths&nbsp;&bull;&nbsp;
+                                            <?= $listing->getSq_ft() ?> sq ft
+                                        </p>
+                                        <p>
+                                            <a href='<?= base_url('listings/view_listing/') . $listing->getId(); ?>'><i class="fa fa-list orange" aria-hidden="true"></i>&nbsp;View Details</a>&nbsp;&nbsp;&nbsp;
+                                            <a><i class="fa fa-envelope-o orange" aria-hidden="true"></i>&nbsp;Request Information</a>
+                                        </p>
                                     </div>
-                                    <form class="gallery-form">
+                                    
+                                    <!--form class="gallery-form">
                                         <input type="hidden" value="<?= $listing->getId() ?>" name="listing-id" />
                                         <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#gallery-modal">View Photos</button>
-                                    </form>
+                                    </form-->
                                     
                                 </div>
                             

@@ -20,27 +20,47 @@ class Listings extends CI_Controller {
         $listings = Listing::getListingsByType('sale');
         $data['rentals'] = Listing::getListingsByType('rental');
         
-        /*
-        $data['listings'] = array();
-        // Set featured images
-        foreach ($listings as &$listing) {
-            // Add a new attribute containing the featured image object
-            $id = $listing->getFeaturedImage();         
-            
-            $data['listings'][] = array(
-                ['listing'] => $listing,
-                ['image'] => Image::getImageById($listing->getFeaturedImage())
-            );
-            //$data['listings'][] = $listing;
-            //$data['listings']['image'] = Image::getImageById($id);
-            //$listing = (array)$listing;                                 // Cast object to array
-            //$listing['image'] = Image::getImageById($id);               // Add new index for image object
-            //$listing = (object)$listing;                                // Cast back to an object
+        $this->load->view('listings_view', $data); 
+    }
+    
+    
+    public function view_listing($listing_id) {
+        $listing_id = $this->security->xss_clean($listing_id);
+        $data = array();
+        $data['active'] = null;
+        $data['listing'] = Listing::getListingById($listing_id);
+        $data['featured_image'] = Image::getImageById($data['listing']->getFeaturedImage());
+        
+        $data['gallery_images'] = Image::getImagesByListingId($listing_id);
+        
+        // Remove featured image from gallery array
+        $i = 0;
+        foreach ($data['gallery_images'] as $img) {
+            if ($img->getId() == $data['featured_image']->getId()) {
+                unset($data['gallery_images'][$i]);
+            }
+            $i++;
         }
         
-        var_dump($data['listings']); die;
-         */
-        $this->load->view('listings_view', $data); 
+        // Get JSON from demographics database
+        $demo_db = $this->load->database('demographics', TRUE);
+        $zip = $data['listing']->getZip();   
+        $results = $demo_db->query("SELECT json FROM data WHERE zip = '$zip'");
+        $data['demo'] = json_decode($results->result()[0]->json, true);
+        
+        
+        //var_dump($data['demo']); die;
+        // Get demographic values
+        //$data['demographics'] = array();
+        //$data['demographics']['population'] = $json['Population']['Total'];
+        //$data['demographics']['density'] = $json['Population']['Density'];
+        //$data['demographics']['median_age'] = $json['Population']
+        
+        
+        //var_dump($data['demographics']); die;
+        //var_dump($json); die;
+
+        $this->load->view('view_listing_view', $data);
     }
     
     
@@ -113,6 +133,7 @@ class Listings extends CI_Controller {
         $listing->setBedrooms($post_data['bedrooms']);
         $listing->setBathrooms($post_data['bathrooms']);
         $listing->setAdditional($post_data['additional']);
+        $listing->setZip($post_data['zip']);
         
         $type = Listing_type::getTypeByName($post_data['listing-type']);
         $listing->setListingType($type->getId());
