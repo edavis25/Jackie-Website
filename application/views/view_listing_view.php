@@ -22,40 +22,55 @@
         <div class="tab-content">  
             <!-- Listing info tab -->
             <div id="info-tab" class="tab-pane fade in active">
-                
-                <!-- Image Slider -->
-                <div id="homepage-slider" class="flexslider">
-                    <ul class="slides">
-                        <!-- Featured Image -->
-                        <li>
-                            <div class="img-container">
-                                <img src="<?= base_url('img/uploads/') . $featured_image->getFilename();?>" class="img img-responsive home-carousel" />
-                            </div>
-                        </li>
-                        
-                        <!-- Gallery Images -->
-                        <?php foreach ($gallery_images as $image) : ?>
-                        <li>
-                            <img src="<?= base_url('img/uploads/') . $image->getFilename() ?>" class="img img-responsive home-carousel" />
-                        </li>
-                        <?php endforeach; ?>
-                    </ul><!-- items mirrored twice, total of 12 -->
-                </div>
+                <div class="row">
+                    <!-- Image Slider -->
+                    <div id="homepage-slider" class="flexslider">
+                        <ul class="slides">
+                            <!-- Featured Image -->
+                            <li>
+                                <div class="img-container">
+                                    <img src="<?= base_url('img/uploads/') . $featured_image->getFilename();?>" class="img img-responsive home-carousel" />
+                                </div>
+                            </li>
 
-                <div id="carousel-thumbnails" class="flexslider hidden-xs">
-                    <ul class="slides">
-                        <!-- Featured Image -->
-                        <li>
-                            <img src="<?= base_url('img/uploads/') . $featured_image->getFilename() ?>" class="img img-responsive img-thumbnail" />
-                        </li>
-                        
-                        <!-- Gallery Images -->
-                        <?php foreach ($gallery_images as $image) : ?>
-                        <li>
-                            <img src="<?= base_url('img/uploads/') . $image->getFilename() ?>" class="img img-responsive img-thumbnail"
-                        </li>
-                        <?php endforeach; ?>
-                    </ul>
+                            <!-- Gallery Images -->
+                            <?php foreach ($gallery_images as $image) : ?>
+                                <li>
+                                    <img src="<?= base_url('img/uploads/') . $image->getFilename() ?>" class="img img-responsive home-carousel" />
+                                </li>
+                            <?php endforeach; ?>
+                        </ul><!-- items mirrored twice, total of 12 -->
+                    </div>
+
+                    <div id="carousel-thumbnails" class="flexslider hidden-xs">
+                        <ul class="slides">
+                            <!-- Featured Image -->
+                            <li>
+                                <img src="<?= base_url('img/uploads/') . $featured_image->getFilename() ?>" class="img img-responsive img-thumbnail" />
+                            </li>
+
+                            <!-- Gallery Images -->
+                            <?php foreach ($gallery_images as $image) : ?>
+                                <li>
+                                    <img src="<?= base_url('img/uploads/') . $image->getFilename() ?>" class="img img-responsive img-thumbnail"
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <h4>Details</h4>
+                    <p class='larger-text'>
+                        <b>$<?= $listing->getPrice() ?></b>&nbsp;&bull;&nbsp;
+                        <?= $listing->getBedrooms() ?> Beds&nbsp;&bull;&nbsp;
+                        <?= $listing->getBathrooms() ?> Bathrooms&nbsp;&bull;&nbsp;
+                        <?= $listing->getSq_ft() ?> Square Feet
+                    </p>
+                    <hr />
+                    <h4>Description</h4>
+                    <p class='larger-text'>
+                        <?= $listing->getDescription() ?>
+                    </p>
                 </div>
 
             </div> <!-- End listing info tab content -->

@@ -138,16 +138,4 @@ $(document).ready(function () {
     });
     
     
-    // View listing photo gallery
-    $('.gallery-form').on('submit', function(event) {
-        event.preventDefault();
-        var formData = $(this).serialize();
-        var url = getRootUrl() + 'jackie/gallery';
-        
-        $.get(url, formData, function(data) {
-            $('#gallery-modal-content').html(data);
-        });
-    });
-    
-    
 });

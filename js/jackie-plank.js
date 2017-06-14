@@ -60,11 +60,23 @@ $(document).ready(function() {
             type: "POST",
             data: formData,
             success: function (data) {
-                $('#message-sent-status').html(data);
+                //$('#request-info-form').replaceWith(data);
+                $('#request-info-container').fadeOut('fast', function() {
+                    $('#request-info-container').html(data);
+                    $('#request-info-container').fadeIn('fast');
+                    $('#request-info-container').css('border', 'none');
+                });
             },
             error: function () {
                 alert("ERROR: There was a problem sending your message.");
             }
+        });
+    });
+
+    $('.request-info-link').on('click', function(event) {
+        var url = $(this).attr('data-href');
+        $.get(url, function(data) {
+            $('#contact-modal-content').html(data);
         });
     });
     
@@ -212,64 +224,3 @@ function getRootUrl() {
     return window.location.origin ? window.location.origin + '/' : window.location.protocol + '/' + window.location.host + '/';
 }
 
-
-// REVIEW FOR DELETION (replaced with jQuery AJAX)
-
-/* POST request
-function postAjaxRequest(callback, url, args) {
-    var contentType = 'application/x-www-form-urlencoded';
-    var ajax = new createAjaxObject(callback);
-    if (!ajax) {
-        return false;
-    }
-
-    ajax.open('POST', url, true);
-    ajax.setRequestHeader('Content-type', contentType);
-    ajax.setRequestHeader('Content-length', args.length);
-    ajax.setRequestHeader('Connection', 'close');
-    ajax.send(args);
-    return true;
-}
-
-// GET request
-function getAjaxRequest(callback, url, args) {
-    // Ensure cached call is not used
-    var nocache = '&nocache=' + Math.random() * 1000000;
-
-    var ajax = new createAjaxObject(callback);
-    if (!ajax) {
-        return false;
-    }
-
-    ajax.open('GET', url + '?' + args + nocache, true);
-    ajax.send();
-    return true;
-}
-
-// Create the AJAX object. Nested Try/Catch blocks to accomodate different browsers
-function createAjaxObject(callback) {
-    var ajax;
-    try {
-        ajax = new XMLHttpRequest();
-    } catch (ex1) {
-        try {
-            ajax = new ActiveXObject("Msxm12.XMLHTTP");
-        } catch (ex2) {
-            try {
-                ajax = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (ex3) {
-                ajax = false;
-            }
-        }
-    }
-
-    if (ajax) {
-        ajax.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
-                callback.call(this.responseText);
-            }
-        };
-    }
-    return ajax;
-}
-*/

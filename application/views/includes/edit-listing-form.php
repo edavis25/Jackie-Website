@@ -68,8 +68,9 @@
         </div>
 
         <div class="container-fluid form-group">
-            <label for="input-additional">Additional Information</label>
-            <input class="form-control" id="input-additional" name="additional" placeholder="Additional info (separate with commas - not required)" type="text" value="<?= isset($listing) ? $listing->getAdditional() : ''?>">
+            <label for="input-additional">Description</label>
+            <textarea class="form-control" id="input-desciption" name="description" rows="5"><?= isset($listing) ? $listing->getDescription() : 'Listing description' ?></textarea>
+            <!--input class="form-control" id="input-additional" name="additional" placeholder="Additional info (separate with commas - not required)" type="text" value="PHP HERE IF USED"-->
         </div>
 
         <!-- Check flag for allowing image uploads in add listing form (only shown for new listing adds) -->

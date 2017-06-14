@@ -13,7 +13,7 @@ class Listing extends Model {
     protected $sq_ft;
     protected $bedrooms;
     protected $bathrooms;
-    protected $additional;
+    protected $description;
     protected $featured_image;
     protected $listing_type;
     
@@ -26,7 +26,7 @@ class Listing extends Model {
         $this->setSq_ft(safeGet($array, 'sq_ft', null));
         $this->setBedrooms(safeGet($array, 'bedrooms', null));
         $this->setBathrooms(safeGet($array, 'bathrooms', null));
-        $this->setAdditional(safeGet($array, 'additional', null));
+        $this->setDescription(safeGet($array, 'description', null));
         $this->setFeaturedImage(safeGet($array, 'featured_image', null));
         $this->setListingType(safeGet($array, 'listing_type', null));
         $this->setZip(safeGet($array, 'zip', null));
@@ -82,11 +82,11 @@ class Listing extends Model {
         $this->bathrooms = $bath;
     }
     
-    public function getAdditional() {
-        return $this->additional;
+    public function getDescription() {
+        return $this->description;
     }
-    public function setAdditional($add) {
-        $this->additional = $add;
+    public function setDescription($desc) {
+        $this->description = $desc;
     }
     
     public function getFeaturedImage() {
@@ -112,7 +112,7 @@ class Listing extends Model {
             'sq_ft' => $this->getSq_ft(),
             'bedrooms' => $this->getBedrooms(),
             'bathrooms' => $this->getBathrooms(),
-            'additional' => $this->getAdditional(),
+            'description' => $this->getDescription(),
             'featured_image' => $this->getFeaturedImage(),
             'listing_type' => $this->getListingType()
         );
@@ -130,7 +130,7 @@ class Listing extends Model {
             'sq_ft' => $this->getSq_ft(),
             'bedrooms' => $this->getBedrooms(),
             'bathrooms' => $this->getBathrooms(),
-            'additional' => $this->getAdditional(),
+            'description' => $this->getDescription(),
             'featured_image' => $this->getFeaturedImage(),
             'listing_type' => $this->getListingType()
         );

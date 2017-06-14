@@ -10,9 +10,6 @@
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>   
    
-    <!-- Fancybox Plugin -->
-    <script src="<?= base_url('vendor/fancybox/jquery.fancybox.js')?>"></script>
-    
     <!-- Flexslider Plugin -->
     <script src="<?= base_url('vendor/flexslider/jquery.flexslider-min.js') ?>"></script>
     <script>
@@ -46,6 +43,9 @@
     
     <!-- Highcharts -->
     <script src="http://code.highcharts.com/highcharts.js"></script>
+    
+    <!-- Homenote mortgage calculator -->
+    <script src="<?= base_url('vendor/homenote/jquery.homenote.min.js')?>"></script>
     
 
     <!-- Custom JavaScript & document.ready() initializations -->

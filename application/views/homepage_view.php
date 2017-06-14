@@ -23,7 +23,7 @@
                         <span class="img-caption">
                             <h3 class=""><?= $listing->getAddress() ?></h3>
                             <span class="hidden-xs">$<?= $listing->getPrice() ?><br /></span>
-                            <a href="#">View Listing</a>
+                            <a href="<?= base_url('listings/view_listing/') . $listing->getId() ?>">View Listing</a>
                         </span>
                     </div>
                 </li>

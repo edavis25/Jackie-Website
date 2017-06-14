@@ -123,7 +123,7 @@ class Listings extends CI_Controller {
         $listing->setSq_ft($post_data['sq_ft']);
         $listing->setBedrooms($post_data['bedrooms']);
         $listing->setBathrooms($post_data['bathrooms']);
-        $listing->setAdditional($post_data['additional']);
+        $listing->setDescription($post_data['description']);
         $listing->setZip($post_data['zip']);
         
         $type = Listing_type::getTypeByName($post_data['listing-type']);
