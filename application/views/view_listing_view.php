@@ -69,7 +69,7 @@
                     <hr />
                     <h4>Description</h4>
                     <p class='larger-text'>
-                        <?= $listing->getDescription() ?>
+                        <?= nl2br($listing->getDescription()) ?>
                     </p>
                 </div>
 
@@ -112,8 +112,7 @@
                     <h3 class="orange">Population by Age</h3>
                     <div id="age-chart" style="width:100%; height:350px;"></div>
                 </div>
-                
-                
+                         
                 <div class="row">
                     <h3 class="orange">Education</h3>
                     <div class="col-sm-6">
@@ -154,12 +153,16 @@
         <div class="container col-md-12">
             <?php require 'includes/jackie-sidebar.php'; ?>
             <br />
+            <div id="map" style="height: 225px; width: auto;"></div>
+            <input type="hidden" id="map-info" value="<?= $listing->getAddress() .' '. $listing->getZip(); ?>" />
+            <br />
             <?php require 'includes/request-info-form.php'; ?>
         </div>
     </div>
     
 </div>
 
+<!-- Create demographic charts -->
 <script src="<?= base_url('js/charts.js'); ?>"></script>
 <script>
     $(document).ready(function() {
@@ -173,4 +176,38 @@
         collarTypeChart(<?= json_encode($demo['Wealth']['EmployeeClass']['Keys']) ?>, <?= json_encode($demo['Wealth']['EmployeeClass']['Values']['Employment Class']) ?>);
     });
 </script>
+
+<!-- Init Google Maps -->
+<!-- Google Maps API -->
+<!--script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDZeFnfnLaCtQMy8ewg2qceZekEyJYeLTw&callback=initMap"></script-->
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDZeFnfnLaCtQMy8ewg2qceZekEyJYeLTw"></script>
+<script>
+    initMap();
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13
+        });
+        var geocoder = new google.maps.Geocoder();
+        geocodeAddress(geocoder, map);
+      }
+    
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('map-info').value;
+        //var address = "1034 Jaeger St 43206";
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+      
+</script>
+
+
 <?php require_once 'includes/footer.php' ?>
