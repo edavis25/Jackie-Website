@@ -8,11 +8,13 @@ class Images extends CI_Controller {
         parent::__construct();
         $this->load->model('listing');
         $this->load->model('image');
+        $this->load->helper('util');
     }
     
     
     // Edit listing images modal (called by AJAX)
     public function edit_images($listingId = null) {
+        ensureLoggedIn();
         $data = array();
         
         // If listing id not sent as parameter check GET
@@ -30,6 +32,7 @@ class Images extends CI_Controller {
     }
     
     public function add_images() {
+        ensureLoggedIn();
         $this->load->helper('images');
         $listing_id = $this->input->post('listing-id');
         
@@ -41,7 +44,7 @@ class Images extends CI_Controller {
     
     
     public function set_featured_image($image_id = null, $listing_id = null) {
-        
+        ensureLoggedIn();
         $listing = Listing::getListingById($listing_id);
         $listing->setFeaturedImage($image_id);
         $listing->update();
@@ -55,6 +58,7 @@ class Images extends CI_Controller {
     
     
     public function delete_images() {
+        ensureLoggedIn();
         // Hidden fields created in javascript
         $ids = $this->input->post('delete-ids');
         $listing_id = $this->input->post('listing-id');
@@ -70,7 +74,6 @@ class Images extends CI_Controller {
         //redirect(base_url('admin'));
         $this->edit_images($listing_id);    // Call edit_images to refresh content for AJAX call
     }
-    
     
 }
 

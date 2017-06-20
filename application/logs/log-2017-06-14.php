@@ -5345,3 +5345,49 @@ INFO - 2017-06-14 03:45:21 --> Controller Class Initialized
 INFO - 2017-06-14 03:45:21 --> File loaded: /home/eric/Documents/GitHub/Jackie-Website/application/views/listings_view.php
 INFO - 2017-06-14 03:45:21 --> Final output sent to browser
 DEBUG - 2017-06-14 03:45:21 --> Total execution time: 0.0220
+INFO - 2017-06-14 09:08:43 --> Config Class Initialized
+INFO - 2017-06-14 09:08:43 --> Hooks Class Initialized
+DEBUG - 2017-06-14 09:08:43 --> UTF-8 Support Enabled
+INFO - 2017-06-14 09:08:43 --> Utf8 Class Initialized
+INFO - 2017-06-14 09:08:43 --> URI Class Initialized
+INFO - 2017-06-14 09:08:43 --> Router Class Initialized
+INFO - 2017-06-14 09:08:43 --> Output Class Initialized
+INFO - 2017-06-14 09:08:43 --> Security Class Initialized
+DEBUG - 2017-06-14 09:08:43 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-06-14 09:08:43 --> Input Class Initialized
+INFO - 2017-06-14 09:08:43 --> Language Class Initialized
+INFO - 2017-06-14 09:08:43 --> Loader Class Initialized
+INFO - 2017-06-14 09:08:43 --> Helper loaded: util_helper
+INFO - 2017-06-14 09:08:43 --> Helper loaded: url_helper
+INFO - 2017-06-14 09:08:43 --> Database Driver Class Initialized
+INFO - 2017-06-14 09:08:43 --> Database Driver Class Initialized
+DEBUG - 2017-06-14 09:08:43 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2017-06-14 09:08:43 --> Session: Class initialized using 'files' driver.
+INFO - 2017-06-14 09:08:43 --> Controller Class Initialized
+INFO - 2017-06-14 09:08:43 --> File loaded: /home/eric/Documents/GitHub/Jackie-Website/application/views/homepage_view.php
+INFO - 2017-06-14 09:08:43 --> Final output sent to browser
+DEBUG - 2017-06-14 09:08:43 --> Total execution time: 0.0407
+INFO - 2017-06-14 09:09:14 --> Config Class Initialized
+INFO - 2017-06-14 09:09:14 --> Hooks Class Initialized
+DEBUG - 2017-06-14 09:09:14 --> UTF-8 Support Enabled
+INFO - 2017-06-14 09:09:14 --> Utf8 Class Initialized
+INFO - 2017-06-14 09:09:14 --> URI Class Initialized
+INFO - 2017-06-14 09:09:14 --> Router Class Initialized
+INFO - 2017-06-14 09:09:14 --> Output Class Initialized
+INFO - 2017-06-14 09:09:14 --> Security Class Initialized
+DEBUG - 2017-06-14 09:09:14 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-06-14 09:09:14 --> Input Class Initialized
+INFO - 2017-06-14 09:09:14 --> Language Class Initialized
+INFO - 2017-06-14 09:09:14 --> Loader Class Initialized
+INFO - 2017-06-14 09:09:14 --> Helper loaded: util_helper
+INFO - 2017-06-14 09:09:14 --> Helper loaded: url_helper
+INFO - 2017-06-14 09:09:14 --> Database Driver Class Initialized
+INFO - 2017-06-14 09:09:14 --> Database Driver Class Initialized
+DEBUG - 2017-06-14 09:09:14 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2017-06-14 09:09:14 --> Session: Class initialized using 'files' driver.
+INFO - 2017-06-14 09:09:14 --> Controller Class Initialized
+INFO - 2017-06-14 09:09:14 --> Database Driver Class Initialized
+INFO - 2017-06-14 09:09:14 --> Database Driver Class Initialized
+INFO - 2017-06-14 09:09:14 --> File loaded: /home/eric/Documents/GitHub/Jackie-Website/application/views/view_listing_view.php
+INFO - 2017-06-14 09:09:14 --> Final output sent to browser
+DEBUG - 2017-06-14 09:09:14 --> Total execution time: 0.0390

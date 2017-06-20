@@ -1,4 +1,5 @@
 <?php require_once 'includes/header.php'; ?>
+<?php require_once 'includes/navigation.php' ?>
 
 <!-- Show any flash data -->
 <?php if (!empty($this->session->flashdata())) : ?>

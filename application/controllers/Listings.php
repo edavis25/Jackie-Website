@@ -9,6 +9,7 @@ class Listings extends CI_Controller {
         $this->load->model('listing');
         $this->load->model('image');
         $this->load->model('listing_type');
+        $this->load->helper('util');
     }
     
     
@@ -50,18 +51,16 @@ class Listings extends CI_Controller {
             $data['demo'] = json_decode($results->result()[0]->json, true);   
         }
         
-        //var_dump($data['demo']); die;
         $this->load->view('view_listing_view', $data);
     }
     
     
     // Add a new listing
     public function add_listing() {
-        
+        ensureLoggedIn();
         // TODO: Add validation. Also, fix logic to deal with images that were not added.
         // Perhaps use a stock photo for image coming soon or something
 
-       // $this->load->helper('upload');
         $this->load->helper('images');
         
         $listing_data = $this->input->post();
@@ -74,19 +73,6 @@ class Listings extends CI_Controller {
         // Get listing type
         $type = Listing_type::getTypeByName($listing_data['listing-type']);
         $listing_data['listing_type'] = $type->getId();
-  
-        
-        // Upload featured image file (if exists)
-        /*
-        $upload = new UploadDir('./img/uploads');
-        
-        $featuredImg = $upload->getSingleUpload('featured-image', true);    // returns false if upload fails
-        if ($featuredImg) {                                                 // only create image if upload success
-            $imgArr = $this->createImageArray($featuredImg);
-            $img = new Image($imgArr);
-            $listing_data['featured_image'] = $img->insert();               // Insert returns image id
-        }
-         */
         
         $listing_data['featured_image'] = uploadFeaturedImage('featured-image');    // Returns image id
         
@@ -114,7 +100,7 @@ class Listings extends CI_Controller {
     
     // Update a listing that already exists
     public function update_listing($id, $post_data) {
-         
+        ensureLoggedIn();
         $listing = Listing::getListingById($id);
         
         $listing->setAddress($post_data['address']);
@@ -141,7 +127,7 @@ class Listings extends CI_Controller {
     
     // Populate and show the edit listing modal
     public function edit_listing() {
-        
+        ensureLoggedIn();
         // Called from AJAX to edit existing listing
         $id = $this->input->get('listing-id');
         
@@ -153,7 +139,7 @@ class Listings extends CI_Controller {
     
     
     public function delete_listing() {
-
+        ensureLoggedIn();
         $listing_id = $this->input->post('delete-id');
         $listing = Listing::getListingById($listing_id);
         

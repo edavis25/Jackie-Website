@@ -22,6 +22,12 @@
                 <li><a href="<?= base_url('listings')?>" class="<?= ($active == 'listings') ? 'active' : ''?>">Listings</a></li>
                 <li><a href="<?= base_url('faq/buyers')?>" class="<?= ($active == 'buyers') ? 'active' : ''?>">Buyers</a></li>
                 <li><a href="<?= base_url('faq/sellers')?>" class="<?= ($active == 'sellers') ? 'active' : ''?>">Sellers</a></li>
+                
+                <?php if (isLoggedIn()) : ?>
+                <li><a href="<?= base_url('admin') ?>">Admin</a></li>
+                <li><a href="<?= base_url('auth/logout') ?>">Logout</a></li>
+                <?php endif; ?>
+                
                 <li><a href="<?= base_url('home')?>"><i class="fa fa-home <?= ($active == 'home') ? 'active' : ''?>" aria-hidden="true"></i></a></li>
             </ul>
         </div>
