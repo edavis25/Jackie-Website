@@ -6,13 +6,39 @@
 
     <div class="container col-md-4 col-md-push-8">
         <div class="container col-md-12">
+
             <?php require_once 'includes/jackie-sidebar.php'; ?>
+
+            <div class="row">
+                <div id="search-container">
+                    <h1>Search MLS Listings</h1>
+                    <form class="form" method="post" action="<?= base_url('search/search_term') ?>">
+                        <div class="input-group col-xs-11">
+                            <input type="text" class="form-control" placeholder="Address, City, Zip, Neighborhood" name="srch-term" id="search">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="container col-xs-5">
+                                <div class="input-group" style="margin-top: 10px;">
+                                    <input type="text" class="form-control" placeholder="Min Price" name="min-price" />
+                                </div>
+                            </div>
+                            <div class="container col-xs-5" style="margin-top: 10px;">
+                                <div class="input-group">
+                                    <input type="text" class="form-control " placeholder="Max Price" name="max-price" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     
     <div class="container col-md-8 col-md-pull-4">
         <!--img class="img-responsive" src="http://placehold.it/750x500" alt=""-->
-        
         <div id="homepage-slider" class="flexslider">
             <ul class="slides">
             <?php foreach($listings as $listing) : ?>
@@ -20,6 +46,7 @@
                 <li>
                     <div class="img-container">
                         <img src="<?= base_url('img/uploads/') . $image->getFilename(); ?>" class="img img-responsive home-carousel" />
+       
                         <span class="img-caption">
                             <h3 class=""><?= $listing->getAddress() ?></h3>
                             <span class="hidden-xs">$<?= $listing->getPrice() ?><br /></span>
@@ -47,6 +74,17 @@
 </div>
 <!-- /.row -->
 
+<!-- div class="row">
+    <div class="container col-sm-6" id="search-container">
+        <h1>Search Active MLS Listings</h1>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+</div -->
 
 <!-- Related Projects Row -->
 <div class="row">

@@ -20,6 +20,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?= base_url('listings')?>" class="<?= ($active == 'listings') ? 'active' : ''?>">Listings</a></li>
+                
+                
+                <li class="dropdown">
+                    <a href="###" class="btn-primary dropdown-toggle" data-toggle="dropdown">Listings<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Featured Listings</a></li>
+                        <li><a href="#">Search MLS</a></li>
+                        <li><a href="#">Map Search</a></li>
+                    </ul>
+                </li>
+
+                
                 <li><a href="<?= base_url('faq/buyers')?>" class="<?= ($active == 'buyers') ? 'active' : ''?>">Buyers</a></li>
                 <li><a href="<?= base_url('faq/sellers')?>" class="<?= ($active == 'sellers') ? 'active' : ''?>">Sellers</a></li>
                 

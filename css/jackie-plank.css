@@ -148,6 +148,9 @@ nav {
 .img-btn {
   margin-right: 10px;
 }
+.img-container {
+  position: relative;
+}
 .img-caption {
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
@@ -223,6 +226,23 @@ nav {
 #request-info-container {
   border-radius: 5px;
 }
+/*
+#search-container {
+   color: #ffffff;
+   position: absolute;
+   top: 20%;
+   background-color: rgba(255, 255, 255, 0.8);
+   padding: 0 10px 10px 10px;
+   width: 50%;
+   margin-left: 25%;
+   margin-right: auto;
+  
+   #seach-inner {
+       position: relative;
+
+   }
+}
+*/
 /* =============================================
  * ==  V. Generic & Helper Classes  ============
  * ============================================= */
