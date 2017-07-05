@@ -12,9 +12,9 @@
             <div class="row">
                 <div id="search-container">
                     <h1>Search MLS Listings</h1>
-                    <form class="form" method="post" action="<?= base_url('search/search_term') ?>">
+                    <form class="form" method="post" action="<?= base_url('mls/listings') ?>">
                         <div class="input-group col-xs-11">
-                            <input type="text" class="form-control" placeholder="Address, City, Zip, Neighborhood" name="srch-term" id="search">
+                            <input type="text" class="form-control" placeholder="Address, City, Zip, Neighborhood" name="search" id="search">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </div>

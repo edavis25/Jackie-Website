@@ -25,9 +25,9 @@
                 <li class="dropdown">
                     <a href="###" class="btn-primary dropdown-toggle" data-toggle="dropdown">Listings<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Featured Listings</a></li>
-                        <li><a href="#">Search MLS</a></li>
-                        <li><a href="#">Map Search</a></li>
+                        <li><a href="#" class="larger-text">Featured Listings</a></li>
+                        <li><a href="#" class="larger-text">Search MLS</a></li>
+                        <li><a href="#" class="larger-text">Map Search</a></li>
                     </ul>
                 </li>
 

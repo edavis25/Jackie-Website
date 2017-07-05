@@ -162,30 +162,4 @@ class Listings extends CI_Controller {
         redirect(base_url('admin'));
     }
     
-    /*      ****MOVED TO IMAGES HELPER***
-    // Convert returned metadata to image object creation array
-    private function createImageArray($arr) {
-        $result = array();
-        $result['original_filename'] = $arr['origName'];
-        $result['filename'] = $arr['nameOnDisk'];
-        $result['extension'] = $arr['type'];
-        $result['size'] = $arr['size'];
-        return $result;
-    }
-    
-    
-    // Upload gallery images (not including featured image)
-    private function uploadGalleryImages($listing_id) {
-        $upload = new UploadDir('./img/uploads');
-        
-        $files = $upload->getAllUploads('gallery-images', true);
-        
-        foreach ($files as $file) {
-            $imgArr = $this->createImageArray($file);
-            $imgArr['listing_id'] = $listing_id;
-            $img = new Image($imgArr);
-            $img->insert();
-        }
-    }
-    */
 }

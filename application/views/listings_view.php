@@ -24,14 +24,14 @@
     <div class="container col-md-8 col-md-pull-4 tab-container">
         <div class="row">
             <ul class="larger-text nav nav-tabs">
-                <li class="active"><a href="#listings" data-toggle="tab">Listings</a></li>
+                <li class="active"><a href="#listings" data-toggle="tab">Featured Listings</a></li>
                 <li><a href="#rentals" data-toggle="tab">Rental Properties</a></li>
             </ul>
 
             <!-- All Tabs Content -->
             <div id="myTabContent" class="tab-content">
                 
-                <!-- Listings Tab -->
+                <!-- Featured Listings Tab -->
                 <div class="tab-pane fade active in" id="listings">
                     <!-- div -->
                         <div class="container col-xs-12">
@@ -50,7 +50,7 @@
                         <?php endforeach; ?>
                     </div>
                 </div> <!-- End rentals tab content -->
-   
+                
             </div> <!-- End all tab content -->
         </div> <!-- End main tabbed content row -->
     </div> <!-- End main tabbed content container -->
