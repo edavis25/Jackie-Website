@@ -1,13 +1,14 @@
 // AJAX calls & events for editing/viewing listings
 
 // Note: Check URLs when deploying to live server - ('jackie') used in localhost will need removed
+// The "jackie" URI was moved to be added in the getRootUrl() function
 
 $(document).ready(function () {
 
     // Open edit listing info modal
     $('.edit-listing-btn').on('submit', function (event) {
         event.preventDefault();
-        var url = getRootUrl() + 'jackie/listings/edit_listing?';        // UPDATE URL HERE
+        var url = getRootUrl() + 'listings/edit_listing?';        // CHECK URL HERE
         url += $(this).serialize();
 
         loadDoc('edit-listing-modal-content', url);
@@ -17,7 +18,7 @@ $(document).ready(function () {
     // Open edit listing images modal and delegate events
     $('.edit-images-btn').on('submit', function (event) {
         event.preventDefault();
-        var url = getRootUrl() + 'jackie/images/edit_images?';          // UPDATE URL HERE
+        var url = getRootUrl() + 'images/edit_images?';          // CHECK URL HERE
         url += $(this).serialize();
 
         loadDoc('edit-images-modal-content', url);
@@ -75,7 +76,7 @@ $(document).ready(function () {
             
             var imgId = $('.img-selected').attr('id');
             var listingId = $('#listing-id').val();
-            var url = getRootUrl() + 'jackie/images/set_featured_image/' + imgId +'/' + listingId;          // UPDATE URL HERE
+            var url = getRootUrl() + 'images/set_featured_image/' + imgId +'/' + listingId;          // CHECK URL HERE
             
             $.get(url, function(data) {
                 $('#edit-images-modal-content').html(data);

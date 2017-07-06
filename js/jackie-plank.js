@@ -12,6 +12,16 @@ $(document).ready(function() {
     });
     
     $('.modal-dialog').draggable();
+    
+    // Show AJAX loading GIF (attach "loader-gif" class to a hidden div containing the loader gif)
+    $(document).on({
+        ajaxStart: function () {
+            $('.loader-gif').show();
+        },
+        ajaxStop: function () {
+            $('.loader-gif').hide();
+        }
+    });
 
     // +/- menu collapse toggle
     $('.collapse').on('shown.bs.collapse', function () {
@@ -220,7 +230,11 @@ function loadDoc(id, url, sync) {
     xhttp.send();
 }
 
+
+// REMOVE "jackie" WHEN MOVED TO SERVER
 function getRootUrl() {
-    return window.location.origin ? window.location.origin + '/' : window.location.protocol + '/' + window.location.host + '/';
+    var url = window.location.origin ? window.location.origin + '/' : window.location.protocol + '/' + window.location.host + '/';
+    url += 'jackie/';
+    return url;
 }
 
